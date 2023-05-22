@@ -39,7 +39,7 @@ scriptExecutionLabel.Parent = frame
 -- Create Toggle Button
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 80, 0, 40)
-toggleButton.Position = UDim2.new(0.75, -90, 0.75, -25)
+toggleButton.Position = UDim2.new(0.75, -15, 0.75, -10)
 toggleButton.AnchorPoint = Vector2.new(1, 0.5)
 toggleButton.BackgroundColor3 = Color3.new(0, 1, 0)
 toggleButton.Text = "ON"
