@@ -19,11 +19,11 @@ local RAim_Settings = {
     TeamCheck = true,
 
     Enabled_Distance = false,
-    Show_Distance_Area = true, -- Show the area as a circle the aimbot range
+    Show_Distance_Area = true, -- Show the area as a circle indicating the aimbot range
     Distance_Area_Position = 'Bottom', -- 'Bottom', 'Center', 'Top'
     Distance = 100, -- max 1000
 
-    Select_Player = false, -- Select a players to aimlock (disable teamcheck to include your team)
+    Select_Player = false, -- Select a players to aimlock to (disable teamcheck to include your team)
     Player = {'Player1', 'Player2'},
 
     Custom_Crosshair = {
@@ -42,6 +42,9 @@ local RAim_Settings = {
         FOV_Size = 120, -- 120 is basic, max is 500
         FOV_Rainbow = false,
         FOV_Color = Color3.fromRGB(255, 255, 255),
+        FOV_Side = "Top", -- "Top", "Bottom", "Left", "Right"
+        FOV_Filled = false,
+        FOV_NumSides = 50, -- Number of sides for the FOV shape (used for Circle)
     },
 }
 
@@ -81,14 +84,25 @@ local function createFovCircle()
     fovCircle.Transparency = RAim_Settings.FOV_SETTINGS.FOV_Transparent
     fovCircle.Color = RAim_Settings.FOV_SETTINGS.FOV_Color
     fovCircle.Radius = RAim_Settings.FOV_SETTINGS.FOV_Size
-    fovCircle.NumSides = 50
+    fovCircle.NumSides = RAim_Settings.FOV_SETTINGS.FOV_NumSides
+    fovCircle.Filled = RAim_Settings.FOV_SETTINGS.FOV_Filled
     fovCircle.Visible = true
 end
 
 local function updateFovCircle()
     if fovCircle then
         local mousePos = UserInputService:GetMouseLocation()
-        fovCircle.Position = mousePos
+        local position = Vector2.new(mousePos.X, mousePos.Y)
+        if RAim_Settings.FOV_SETTINGS.FOV_Side == "Top" then
+            position = Vector2.new(mousePos.X, mousePos.Y - fovCircle.Radius)
+        elseif RAim_Settings.FOV_SETTINGS.FOV_Side == "Bottom" then
+            position = Vector2.new(mousePos.X, mousePos.Y + fovCircle.Radius)
+        elseif RAim_Settings.FOV_SETTINGS.FOV_Side == "Left" then
+            position = Vector2.new(mousePos.X - fovCircle.Radius, mousePos.Y)
+        elseif RAim_Settings.FOV_SETTINGS.FOV_Side == "Right" then
+            position = Vector2.new(mousePos.X + fovCircle.Radius, mousePos.Y)
+        end
+        fovCircle.Position = position
     end
 end
 
@@ -200,17 +214,28 @@ local function createDistanceCircle()
 
     local distanceCircle = Drawing.new("Circle")
     distanceCircle.Thickness = 2
-    distanceCircle.Transparency = 0.5
+    distanceCircle.Transparency = 1
     distanceCircle.Color = Color3.new(1, 1, 1)
     distanceCircle.Radius = RAim_Settings.Distance
     distanceCircle.NumSides = 50
+    distanceCircle.Filled = false
     distanceCircle.Visible = true
 
-    RunService.RenderStepped:Connect(function()
+    return distanceCircle
+end
+
+local distanceCircle = createDistanceCircle()
+
+local function updateDistanceCircle()
+    if distanceCircle then
         local mousePos = UserInputService:GetMouseLocation()
         distanceCircle.Position = mousePos
-    end)
+    end
 end
+
+detectDevice()
+createCustomCrosshair()
+createFovCircle()
 
 UserInputService.InputBegan:Connect(function(input)
     if input.KeyCode == RAim_Settings.Keybind then
@@ -219,13 +244,11 @@ UserInputService.InputBegan:Connect(function(input)
 end)
 
 RunService.RenderStepped:Connect(function()
-    if RAim_Settings.Enabled then
-        handleAimbot()
+    if RAim_Settings.FOV_SETTINGS.FOV_Enabled then
+        updateFovCircle()
     end
-    updateFovCircle()
+    if RAim_Settings.Enabled_Distance then
+        updateDistanceCircle()
+    end
+    handleAimbot()
 end)
-
-detectDevice()
-createCustomCrosshair()
-createFovCircle()
-createDistanceCircle()
