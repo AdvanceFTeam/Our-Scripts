@@ -44,12 +44,14 @@ local RTriggerbot_Settings = {
     },
     Delay = 0.1,
     TeamCheck = true,
+    Cooldown = 1, -- in seconds
 }
 
+local CooldownActive = false
 
 -- function to check if a player is on the same team
 local function isTeammate(player)
-    return player.Team == game.Players.LocalPlayer.Team
+    return RTriggerbot_Settings.TeamCheck and player.Team == game.Players.LocalPlayer.Team
 end
 
 -- function to check if a player is within the triggerbot's range
@@ -80,13 +82,13 @@ end
 
 -- function to execute the triggerbot action
 local function triggerbot()
-    if RTriggerbot_Settings.Enabled_RTriggerbot then
+    if RTriggerbot_Settings.Enabled_RTriggerbot and not CooldownActive then
         local target = nil
         for _, player in ipairs(game.Players:GetPlayers()) do
-            if player.Character then
+            if player.Character and not isTeammate(player) and isCloseEnough(player) then
                 local character = player.Character
                 for _, part in ipairs(character:GetDescendants()) do
-                    if isCharacterPart(part.Name) and not isTeammate(player) and isCloseEnough(player) then
+                    if isCharacterPart(part.Name) then
                         target = part
                         break
                     end
@@ -110,6 +112,9 @@ local function triggerbot()
             if not success then
                 mouse1press()
             end
+            CooldownActive = true
+            wait(RTriggerbot_Settings.Cooldown)
+            CooldownActive = false
         end
     end
 end
