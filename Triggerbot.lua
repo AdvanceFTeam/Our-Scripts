@@ -7,6 +7,7 @@
     -- Triggerbot Developers -- 
 
     Owner: YellowGreg
+    Developer: Wspboy12
     Developer: MMSVon
     Developer: Frostbite
 ]]--
