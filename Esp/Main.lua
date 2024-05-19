@@ -268,5 +268,6 @@ local REsp_Settings = {
 -- Variables
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
-local Camera = game:GetService("Workspace").CurrentCamera
-local Data = {}
+local localPlayer = Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local cache = {}
