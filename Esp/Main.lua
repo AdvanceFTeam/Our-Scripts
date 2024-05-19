@@ -262,7 +262,6 @@ local REsp_Settings = {
         Circle_Rainbow = false,
         Circle_Color = Color3.fromRGB(255, 255, 255)
     },
-
 }
 
 -- Variables
