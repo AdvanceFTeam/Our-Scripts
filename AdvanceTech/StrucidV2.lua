@@ -117,7 +117,7 @@ tab:Toggle("Silent Aim", false, function(state)
     end
     local function run()
         task.wait()
-        local gunModule = require(Player.PlayerGui:WaitForChild("MainGui").NewLocal.Tools.Tool.Gun)
+        local gunModule = require(Players.PlayerGui:WaitForChild("MainGui").NewLocal.Tools.Tool.Gun)
         local oldFunc   = gunModule.ConeOfFire
 
         gunModule.ConeOfFire = function(...)
