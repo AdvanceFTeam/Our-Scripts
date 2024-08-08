@@ -484,111 +484,6 @@ GunmodsSection:NewToggle("No Recoil", "?", function(state)
 end)
 
 
-
-local Visual = Window:NewTab("Visuals")
-local C = Visual:NewSection("> ESP V1 <")
-local Drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/YellowGregs/Drawing_library/main/Drawing.lua"))()
--- brrr esp 
-local aj = loadstring(game:HttpGet("https://rawscript.vercel.app/api/raw/esp_1"))()
-
-C:NewToggle("Enable Esp", "?", function(K)
-  aj:Toggle(K)
-  aj.Players = K
-end)
-
-C:NewToggle("Tracers Esp", "?", function(K)
-  aj.Tracers = K
-end)
-
-C:NewToggle("Name Esp", "?", function(K)
-  aj.Names = K
-end)
-
-C:NewToggle("Boxes Esp", "?", function(K)
-  aj.Boxes = K
-end)
-
-C:NewToggle("Team Coordinate", "?", function(L)
-  aj.TeamColor = L
-end)
-
-C:NewToggle("Teammates", "?", function(L)
-  aj.TeamMates = L
-end)
-
-C:NewColorPicker("ESP Color", "?", Color3.fromRGB(255, 255, 255), function(P)
-  aj.Color = P
-end)
-
-local esp = Visual:NewSection("> Random ESP <")
---esp:NewLabel("> Random ESP <")
-local esp_data = {} 
-local espTilesName = 'dontfuckingask'
-
-local function createESP(parent, label)
-    local BillboardGui = Instance.new('BillboardGui')
-    local TextLabel = Instance.new('TextLabel')
-
-    BillboardGui.Name = espTilesName
-    BillboardGui.Parent = parent
-    BillboardGui.AlwaysOnTop = true
-    BillboardGui.Size = UDim2.new(0, 50, 0, 50)
-    BillboardGui.StudsOffset = Vector3.new(0, 2, 0)
-
-    TextLabel.Parent = BillboardGui
-    TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-    TextLabel.BackgroundTransparency = 1
-    TextLabel.Size = UDim2.new(1, 0, 1, 0)
-    TextLabel.Text = label
-    TextLabel.TextColor3 = Color3.new(1, 0, 0)
-    TextLabel.TextScaled = false
-
-    return BillboardGui
-end
-
-local function applyESP(object, label)
-    if object:IsA('TouchTransmitter') then
-        local parent = object.Parent
-        if not parent:FindFirstChild(espTilesName) then
-            local newESP = createESP(parent, label)
-            esp_data[parent] = newESP
-        end
-    end
-end
-
-local function toggleESP(enable, name, label)
-    if enable then
-        for _, v in ipairs(game.Workspace:GetDescendants()) do
-            if v:IsA('TouchTransmitter') and v.Parent.Name == name then
-                applyESP(v, label)
-            end
-        end
-        
-        game.Workspace.DescendantAdded:Connect(function(descendant)
-            if descendant:IsA('TouchTransmitter') and descendant.Parent.Name == name then
-                applyESP(descendant, label)
-            end
-        end)
-    else
-        for parent, espElement in pairs(esp_data) do
-            if parent and espElement then
-                espElement:Destroy()
-                esp_data[parent] = nil
-            end
-        end
-    end
-end
-
-esp:NewToggle('Ammo Box ESP', '?', function(enabled)
-    toggleESP(enabled, 'DeadAmmo', 'Ammo Box')
-end)
-
-esp:NewToggle('HP Jug ESP', '?', function(enabled)
-    toggleESP(enabled, 'DeadHP', 'HP Jar')
-end)
-
-
-
 local Player = Window:NewTab("Player")
 local PlayerSection = Player:NewSection("> Fly Hacks <")
 PlayerSection:NewToggle("Fly", "Allows the player to fly", function(state)
@@ -1123,6 +1018,107 @@ Extra:NewToggle("IsAdmin", "?",function(x)
 end)
 
 
+local Visual = Window:NewTab("Visuals")
+local C = Visual:NewSection("> ESP V1 <")
+-- brrr esp 
+local aj = loadstring(game:HttpGet("https://rawscript.vercel.app/api/raw/esp_1"))()
+
+C:NewToggle("Enable Esp", "?", function(K)
+  aj:Toggle(K)
+  aj.Players = K
+end)
+
+C:NewToggle("Tracers Esp", "?", function(K)
+  aj.Tracers = K
+end)
+
+C:NewToggle("Name Esp", "?", function(K)
+  aj.Names = K
+end)
+
+C:NewToggle("Boxes Esp", "?", function(K)
+  aj.Boxes = K
+end)
+
+C:NewToggle("Team Coordinate", "?", function(L)
+  aj.TeamColor = L
+end)
+
+C:NewToggle("Teammates", "?", function(L)
+  aj.TeamMates = L
+end)
+
+C:NewColorPicker("ESP Color", "?", Color3.fromRGB(255, 255, 255), function(P)
+  aj.Color = P
+end)
+
+local esp = Visual:NewSection("> Random ESP <")
+--esp:NewLabel("> Random ESP <")
+local esp_data = {} 
+local espTilesName = 'dontfuckingask'
+
+local function createESP(parent, label)
+    local BillboardGui = Instance.new('BillboardGui')
+    local TextLabel = Instance.new('TextLabel')
+
+    BillboardGui.Name = espTilesName
+    BillboardGui.Parent = parent
+    BillboardGui.AlwaysOnTop = true
+    BillboardGui.Size = UDim2.new(0, 50, 0, 50)
+    BillboardGui.StudsOffset = Vector3.new(0, 2, 0)
+
+    TextLabel.Parent = BillboardGui
+    TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+    TextLabel.BackgroundTransparency = 1
+    TextLabel.Size = UDim2.new(1, 0, 1, 0)
+    TextLabel.Text = label
+    TextLabel.TextColor3 = Color3.new(1, 0, 0)
+    TextLabel.TextScaled = false
+
+    return BillboardGui
+end
+
+local function applyESP(object, label)
+    if object:IsA('TouchTransmitter') then
+        local parent = object.Parent
+        if not parent:FindFirstChild(espTilesName) then
+            local newESP = createESP(parent, label)
+            esp_data[parent] = newESP
+        end
+    end
+end
+
+local function toggleESP(enable, name, label)
+    if enable then
+        for _, v in ipairs(game.Workspace:GetDescendants()) do
+            if v:IsA('TouchTransmitter') and v.Parent.Name == name then
+                applyESP(v, label)
+            end
+        end
+        
+        game.Workspace.DescendantAdded:Connect(function(descendant)
+            if descendant:IsA('TouchTransmitter') and descendant.Parent.Name == name then
+                applyESP(descendant, label)
+            end
+        end)
+    else
+        for parent, espElement in pairs(esp_data) do
+            if parent and espElement then
+                espElement:Destroy()
+                esp_data[parent] = nil
+            end
+        end
+    end
+end
+
+esp:NewToggle('Ammo Box ESP', '?', function(enabled)
+    toggleESP(enabled, 'DeadAmmo', 'Ammo Box')
+end)
+
+esp:NewToggle('HP Jug ESP', '?', function(enabled)
+    toggleESP(enabled, 'DeadHP', 'HP Jar')
+end)
+
 --// Setting \\--
 local Setting = Window:NewTab("Setting")
 local Section = Setting:NewSection("> Performance <")
@@ -1387,8 +1383,6 @@ local Section = Credit:NewSection("Report Non-Functional Bugs Scripts on Discord
 Section:NewButton("Copy Discord Link", "Discord", function()
     setclipboard("https://discord.gg/FuZCM5X8TW")
 end)
-
-
 
 
 
