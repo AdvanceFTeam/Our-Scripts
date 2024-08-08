@@ -487,6 +487,7 @@ end)
 
 local Visual = Window:NewTab("Visuals")
 local C = Visual:NewSection("> ESP V1 <")
+local Drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/YellowGregs/Drawing_library/main/Drawing.lua"))()
 -- brrr esp 
 local aj = loadstring(game:HttpGet("https://rawscript.vercel.app/api/raw/esp_1"))()
 
