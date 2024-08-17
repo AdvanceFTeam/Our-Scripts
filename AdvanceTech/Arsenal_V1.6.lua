@@ -1017,7 +1017,7 @@ Extra:NewToggle("IsAdmin", "?",function(x)
   end
 end)
 
---[[ -- Solara Drawing Problem had to do it :]
+
 local Visual = Window:NewTab("Visuals")
 local C = Visual:NewSection("> ESP V1 <")
 -- brrr esp 
@@ -1118,7 +1118,7 @@ end)
 esp:NewToggle('HP Jug ESP', '?', function(enabled)
     toggleESP(enabled, 'DeadHP', 'HP Jar')
 end)
-]]
+
 --// Setting \\--
 local Setting = Window:NewTab("Setting")
 local Section = Setting:NewSection("> Performance <")
