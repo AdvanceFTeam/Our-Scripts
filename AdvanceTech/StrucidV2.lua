@@ -225,7 +225,7 @@ end)
   -- Visuals tab
   local Visual = win:Tab("Visuals")
   Visual:Label("> ESP")
-  -- dont know who created this but credit to the original creator of this esp script (NOT StevenK-293 script) could be DekuDimz
+  -- kiriot22s esp
   local aj = loadstring(game:HttpGet("https://raw.githubusercontent.com/StevenK-293/Loadstrings/main/esp.lua"))()
   
   Visual:Toggle("Enable Esp (Won't Work For FFA)", false, function(K)
