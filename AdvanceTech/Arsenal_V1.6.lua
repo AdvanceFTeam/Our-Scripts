@@ -1020,7 +1020,7 @@ end)
 
 local Visual = Window:NewTab("Visuals")
 local C = Visual:NewSection("> ESP V1 <")
--- brrr esp 
+-- kiriot22s esp
 local aj = loadstring(game:HttpGet("https://rawscript.vercel.app/api/raw/esp_1"))()
 
 C:NewToggle("Enable Esp", "?", function(K)
