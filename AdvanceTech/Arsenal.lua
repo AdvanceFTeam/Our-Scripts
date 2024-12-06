@@ -4,116 +4,27 @@
 -- ALSO im sorry if this arsenal script have messy codes in it, I will try to make it organized in the future if im not lazy. 
 
 --[[
-
-@@@@@@*@*;;;;;;;;o;;;;!::::,!*!;;;;;;;;!o;;;;;;;;;;;;;;;;;;;;;;!;;;;;;;;;;!!;;;;;;;;;;;;*!;;;;;;;;;;o@$;;;;o;*!o!;;*@ @@@@@@@@@@@@@@@@@@@@@@@
-@@@@@*@$!:;;;;;;*;;;;!;,::,;*o;;;;;;;;;o!;;;;;;;;;;;;;;;;;;;;;;!;;;;;;;;;;;!!;;;;;;;;;;;oo;;;;;;;;;;;$@%;!;o;o!o!;;*@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@*@$*;;;;;;;*;:;!*!,::,:oo;;;;;;;;;;o;;;;;;;;;;;;;;;;;;;;;;;o!;;;;;;;;;;;!!;;;;;;;;;;;*!;;;;;;;;;;!#@*;;o!o!oo;;*@ @@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@*o;;;;;;*;:;oo!,,,,,ooo;;;;;;;;;!o;;;;;;;;;;;;;;;;;;;;;;;!!;;;;;;;;;;;;;;;;;;;;;;;;!o;;;;;;;;;!;%@#!;o!oo!o;;*@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@!@*!o;;;;;*;:!*;!:,::,!!o;;;;;;;;;;o!;;;;;;;;;;;;;;;;;;;;;;;!!;;;;;;;;;;;;;;;;;;;;;;;;;*!;;;;;;;;;;!#@8;o!!o!o;;%@!@@@@@@@@@@@@@@@@@@@@@@@
-@@*@&!!o;;;;o;:oo;!!.::,;o!o;;;;;;;;;;o;;;;;;;;;;;;;;;;;;;;;;;;!!;;;;;;;;;;;;;;;;;;;;;;;;;oo;;;;;;;;;!;%@@$!o!o!o;!%@$@@@@@@@@@@@@@@@@@@@@@@@
-@@ @*;oo;;;!;;*o;;o,,:::o;o!;;;;;;;;;!o;;;;;;;;;;;;;;;;;;;;;;;;!!;;;;;;;;;;;;;;;;;;;;;;;;;;*!;;;;;;;;!!!8@@*!!o!o;o$@$@@@@@@@@@@@@@@@@@@@@@@@
-@$@%o!!o;;!!;o!;;!:,:,:!o;o;;;;;;;;;;o!;;;;;;;;;;;;;;;;;;;;;;;;;!;;;;;;;;;;;;;;;;;;;;;;;;!;oo;;;;;;;!!!;*@@#o!o!!;o8@ @@@@@@@@@@@@@@@@@@@@@@@
-@@@*;!!o;;!;o!;;;!,:,,;o;!o;;;;;;;;;;o;;;;;;;;;;;;;;;;;;;;;;;;;;!;;;;;;;;;;;;;;;;;;;;;;;;!;!*;;;;!!;!!!!;8@@$!o!!;%;@@@@@@@@@@@@@@@@@@@@@@@@@
-$@oo!!!o;!;o!;;;!:,:,:o!;o!;;;;;;;;;!o;;;;;;;;;;;;;;;;;;;;;;;;;;!!;;;;;;;;;;;;;;;;;;;;;;;!!;oo;!;!!;!!!!;*@@@*o!!;8@ @@@@@@@@@@@@@@@@@@@@@@@@
- @o!!!!o!;o!;;;;!.:,,;o;;o;;;;;;;;;;!o;;;;;;;;;;;;;;;;;;;;;;;;;;!!;;;;;;;;;;;;;;!;;;;;!!!!!;!*;!;!!!!!!!!;8@@8!!!o$$@*@@@@@@@@@@@@@@@@@@@@@@@
-@$!!!o;o!!o;;;;o:,:,:o!;!o;;;;;;;;;;o!;;;;;;;;;;;;;;;;;;;;;;;;;;o!;;;;;;;;;;;!!!!!!!!!!!!!!!;*!;!!!!!!!!!;*@@@*o**!*&@$@@@@@@@@@@@@@@@@@@@@@@
-@%;o!o!oo!;;;;;o,!:,;*;;o!;;;;;;;;;;*!;;;;;;;;;;;;;;;;;;;;;;;;;;!!;;;;;;;;;;!!!!!!!!!!;;!!!!;oo;!!!!!!!!!!;8@@&%*o;!%#@$@@@@@@@@@@@@@@@@@@@@@
-@*:o!!!!*;;;;;!;:!,,oo;;o!;;;;;;;;;!*;;;;;;;;;;;;;;;;;;;;;;;;;;;!!;;!!;!;;!!!!!!!!!!!!;!!!!!;!*;!!!!!!!o!!;*@@@&!oo;!%$@$@@@@@@@@@@@@@@@@@@@@
-@o:o!!!;o;;;;;o,o;,:*;;!*;;;;;;;;;;!o;;;;;;;;;;;;;;;;;;;;;;;;;;;!!;;*%;!!!!!!!!!!!!!!o!!!!!!!!*!!!!!!!!!o!!;&@@$;!o!!;o$@!@@@@@@@@@@@@@@@@@@@
-&!:o!!o;o;;;;;!,%:,!o;;!o;;;;;;;;;;oo;;;;;;;;;;;;;;;;;;;;;;;;;;;!!;;o$*;!!!!!!!!!!!!;oo;!!!!!;oo;!!!!!!!o!!;*@@o!!oo!!;o$@$@@@@@@@@@@@@@@@@@@
-%!;!o;o;o!;;;!:;*,,o!;;oo;;;;;;;;;;o!;;;;;;;;;;;;;;;;;;;!;;!;!;;!!!;o!*o;!!!!!!!!!!!!;o!;!!!!;oo;!!!o!!!!*!!!$*!!!!*!!!;o$@$@@@@@@@@@@@@@@@@@
-%!;!*;o;!o;;;o,o*,:*;;;o!;;;;;;;;;;o!;;;;;;;;;;;;;;;;;;;!;;!!!!;!!!;o!,*!;!!!!!!!!!!!!!o!!!!!!!*!!!!o!!!;oo!!oo!!!!*!!!!;!%@$@@@@@@@@@@@@@@@@
-%!;!*;o!;*;;;o.$*,;o;;;o!;;;;;;;;;;*!;;;;;;;;;;;;;;;;;;;!!!!!!!!!!!;o!,:*!;!!!!!!!!!!!!!o!!!!!!*!!!!o!!!!!*!!!*!!!!oo!!!!!!%@*@@@@@@@@@@@@@@@
-%!;;*!!o;o!;!!,&*,o!;;!*;;;;;;;;;;!*;;;;;;;;;;;;!;;!;;;;!!!!;!!!!!!;o!,,;*!!!!!!!!!!!!!!o!!!!!!oo!!!!o!!!!!*!!oo!!!!o!!!!!!!%@$@@@@@@@@@@@@@@
-%!;;*o;o;!o;o::@*;o;;;!o;;;;;;;;;;!*;;;;;;;;!!!!!!;!;;;;!!!!!!!!!!!;o!,:,!*;!!!!!!!!!!!!!*!!!!!oo!!!!o!!!!!oo!!*!!!!oo!!!!!!o$@$@@@@@@@@@@@@@
-&o;;o*;o!;*;o,!@$;o:!;oo;;;;;;;;;;!o;!;;!!;!!!!!!!;!;;;;!!!!!!!!!!!;o!,::,!o;!!oo;!!!!!!!oo!!!!!o!!!!oo!!!!!*!!oo!!!!o!!!!!!!*$@$@@@@@@@@@@@@
-@o;;!%!!o;ooo,%@#o!;!;o!;;;;;;;;!;o!;!!;!!!!!!!!!!!!!;;;!!!!!!!!!!!;o!,:,:,!o;!!%!;!!!!!!!*!!!!!o!!!!!o!!!!!o*!!o!!!!o!!!!!!!!*8@*@@@@@@@@@@@
-@*;;;*o;o!;oo.&@@8;;!;o!;!;;;;;;!;o!;!!!!!!!!!!!!!!!o;;;!!!!!!!!!!!;o!,:,,:,oo;!o$!;!!!!!!oo!!!!o!!!!!o!!!!!!*o!oo!!!!!!!!!oo!!%@ @@@@@@@@@@@
-@*;;;o*;!!;!o.8@@&;;;;o;;!;;!;!!!;o;;!!!!!!!!!!;o*;!o!;!!!!!!!!!!!!;o!,:,,,,,*o!;*$o!o!!!!!*!!!!!o!!!!o!!!!!!!*!!o!!!!!!!!!*%!!o$@$@@@@@@@@@@
-@%!;;!*!;o;!!,#@@$:!;!o;!!;;!;!!!;o;;!;;!!!!!!!;%&;!o!;!!!!!!!!!!!!!o;,:,,,:,,*o!o%*o!!!!!!oo!!!!o!!!!oo!!!!!!o*!o!!!!!!!!!o$!!!*&@@@@@@@@@@@
-@8o;;!**;!!!!:@@@%,!;!!;!!;;!;!!!;o;;;;;!!!!!!!;88;!o!;!!!!!!!!!!!!!o;,:,,:,,,:**!oooo;!!!!!*!!!!*o!!!!o!!!o!!!*o!o!!!!!!!!!$o!!!$@$@@@@@@@@@
-$@*;;;o*o;!!!!@@@o:!;!!;!!;;!!!!!!o::;!!!!!!!!!o#8!!o;;!!!!!!!!!!!!!o;,:,,,::;::oo;*!%*;!!!!*o!!!*o!!!!o!!!%o!!!%o!!!!!!!!!!$$!!!*8@@@@@@@@@@
-$@%!;;oo*!!!;o@@@!:!;!;;!!;;!!!!!!o,;!!!!!!!!!;%$$!!o;!!!!!!!!!!!!!!o:,,,::;::,,:*o!*;&%;!!!o*!!!o*!!!!oo!!*%!!!!*!!!!!oo!!!&&!!!o$@$@@@@@@@@
-@@@o;;!*oo;!;%@@@;:!;!;;!!;;!!!;:!o:!!!!!!!!!!!$o%!!o;!!!!!!!!!!!!!!o,,::::,,,::,:*ooo;&$;!!!*!!!o%!!!!oo!!!&o!!!**!!!!!*!!o#8o!!!%@ @@@@@@@@
-@$@%!;;o!*!;;$@@#::!;!;;!!;;!!!;:!o;!!!!!!!!!!!%;*o!o;!!!!!!!!!!!!!!!:;::,,,,,,,:,,oo*!;$$!!!o*!!!%!!!!!o!!!$$!!!!*o!!!!*o!*##*!o!*$@ @@@@@@@
-@@@8o;;!*!o;;&@@8::!!!;:;;;;!!!;;!o;!!!!!!!!!!oo;*o!o!!!!!!!!!!!!!!o!;:,,,,,,,,,,:,,;o*;!&$!;!*!!!%o!!!!o!!!o8!!!!!%o!!!*%;$##%!o!o$@$@@@@@@@
-@@$@%!;;*!!o;&@@8,:;!!::;;;;!!!!!!o!!!!!!!!!!!*!;oo!o!!!!!!!!!!!!!!o;,,,,,,,,,,,,:,:,:!o$!&8$**o!!%o!!!!oo!!!&%!!!!!*!!!o%!8#8$!o!o$@$@@@@@@@
-@@@@8o;!!*;!!&@@8,:;;!::;!;;!!!!!!o!!!!!!!!!!!*!;oo!o!!!!!!!!!!!!!!o;,:,:,,,,,,:,,:,,,!8@#@@@@@*!!*o!!!!!o!!!*8!!!!!o%!!!%%##&$o!!o%@$@@@@@@@
-@@@$@%!!;oo;!8@@&,:;;!:;!!;;!!!!!oo!!!!!!!!!!oo;;!*!*!!!!!!!!!!!!!!o:,,,,,,,,,:,::,:o8@@@@#$&8&%!!*o!!!!!o!!!!&%!!!!!**!!*$#8&$oo!o%@$@@@@@@@
-@@@ @%*!!!*!!&@@&,:;;!;!!!;;!!!!!o!!!!!!!!!!!o!;;!*!*!!!!!!!!!!!!!!o:,,,,,,,:,,;;:o#@@##@@@8*;:*o!oo!!!!!!!!!!*8!!!!!!*o!o&#8$%*ooo*@$@@@@@@@
-@@@@$@%o!!!oo$@@&,;;!!;!!!;;!!!!!!!!!!!!!!!!o*!;;!*!*!!!!!!!!!!!!!!o,,,,,,,:,:;:;&@#8#@@@@##$,,o*!!!!!!!!!!!!!!8%!!!!!!*o!%8#%**ooo:@ @@@@@@@
-@@@@@@@*!!!!o$@@&,;!!!;!!!;;!!!!!o!!!!!!!!!!*o;!;;*!*o!!!!!!!!!!!!oo,,,,,,:,:;;*@@##@@@@8&$$&:,;*!!!!!!!!!!!!!!$#!!!!!!!*oo$8%**ooo@*@@@@@@@@
-@@@@@*@&*!o*o%@@&,!!!!;!!!;;!!!!!o!!!!!!!!!!%o;!!;o!*o!!!!!!!!!!!!o!,:,,,:,:;:&@@#@@@#&$$$$%!:,,*!!!!!!!!!!!!!!o@$!!!!!!!*o*8%ooooo@!@@@@@@@@
-@@@@@@$@$o!o*o@@$,!!!!;!!!!;!!!!!!!!!!!!!!!!$!;!!;o!*o!!!!!!!!!!!!*;,:,,:,:o;&@@@@#&$$$$$%o;:,:,oo!!!!!!!!!!!!!!&@o!!!!*o!oo%&!!!!;@ @@@@@@@@
-@@@@@@@*@%oo%;#@$,!!!!;!!!!;!!!!!!!!!!!!!!!o&!;!;;!o*o!!!!!!!!!!!!*:,:,,,::;8@@@8&$$$$%o!::::,:,!o!o!!!!!!!!!!!!%@8!!!!*%*!o%oo!;;@*@@@@@@@@@
-@@@@@@@@@8*o*;$@$,!!!!!!!!!;!!!!!!!!!!!!!!!o$!!;!!!o*!!!!!!!!!!!!!*:,,,,:::$%o#&$$$%o;:::,,,,,:,;o**!!o!!!o!!!!!*8@%!!!!***ooo:!::@;@@@@@@@@@
-@@@@@@@@@@:$o;o8$,!;!!!!!!!;!!!!!!!!!!!!!!!*$;!!!!!!*o!!!!!!!!!!!oo,:,,,::!!:,$8$*;::::,,,,,,,,,;***!!o!!!oo!!!!o$@#o!!!*oo**!,.::@!@@@@@@@@@
-@@@@@@@@@@@%!;!o;,!;!!!!!!!;!!!!!!!!!!!!!!!*%;!!!;!!*!!!o%!!!!!o!o!,:,,,,:,,,:*o::::,,,,,,,,,,,,:*ooo!oo!!!*!!!!o%8@&!!!o*!!o*!:.,@ @@@@@@@@@
-@@@@@@@@*@!*;;o!!,;;!!!!!!!;!!!!!!!!!!!!o!!*o!!;!!;!*!!!%%!!!!o*!o!,:,,,,,,:,::,,,,,,,,,,,,,,,,,:*o!o!oo!!!*!!!!!*$##*!!!*o!!!!!:,!@*@@@@@@@@
-@@@@@@@@*@%*;;o!!:::!!!!!!!!;!!!!!!!!!!!*!!*o;!!!;;!*!!*o%o!!!o%!*:,:,,,,,,,,,,::,,,,,,,,,,,,,,,,*o:*!oo!o!%o!!!!*%&##!!!*o!o!!!;,!@ @@@@@@@@
-@@@@@@@@*@*o;!!!!!::;o!!!!!!;!!!!!!!!!!!*o!*!;!;;;;!*!!%;%o!!!*$!o:,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,*!,*!o*!o!%*!oo!o%%8@$!!o*!oo!!;:!#@$@@@@@@@
-@@@@@@@&@%oo!!!oo;!:;o!!!!!!;!!!!!!!!!!!*o!*!;!;;;;!*!*o;*o!!!%&o!,:,,,,,,,,,,,,,,,,,,,,,,,,,,,:,*;,ooo%!o!**!o!!o%*$#@*!o*ooooo!!;&@ *@@@@@@
-@@@@@@*@8*!!!!ooo;!!,o!!!!!!!!!!!!!!!!!o*o!*!;!;;;;!oo*;;**!!!%$o;,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,:*:,!oo%!o!**!!!!!***&@8!o*o!ooooo!*8@@@@@@@@
-@@@@@  @%!!o!o!!!o;!:!o!!!!!;!!!!!!!!!!ooo!*o;!;;;;!o*o!!o*!!o**o:,,,,,,,,,,:,,,,,,,,,,,,,,,,,,,;!,,;*!$o!!o*!!!!!*%*%@@*!*o!oo!o!!!o*o @@@@@
-@@@@@*@*!ooo!o!o!o!;!oo!!!!!!!!!!!!!!!!*!*!*o;!;!!;!**oo!o*!!*!o!,,,,,,,,,,:,,,,,,,,,,,,,,,,,,,,;:,,:*!$o!!o*!!!!!o%**&@$oo*!o!!******o@@@@@@
-@@@@@@***$;o!ooo!!!;!ooo!!!!!!!!!!!!!!!o!*!*o;!;;!o*$$%$&$%!!*;o;,:,:,,:,,,,,,,,,,,,,,,,,,,,,,,,:,:,:o!$*!!o*!!!!oo%**%@8***!!*&@ @@@@@@@@@@@
-@@@@@o%&@@$o!oo*o!!!;ooo!!!!!!!!!!!!!!!*;oo*o;;!*&###@@@@%oooo;!:,:,:.,:,,,,,,,,,,,,,,,,,,,,,,,,,,,:,oo$*!oo*!o!oo!%%**#@**oo!*$@*!!!!*@@@@@@
-@@@@@@@@o@%o!o!*o!!!!ooo!!!!!!!!!!!!!!o*;oo*o;$#@@#8@@#$&$ooo!;;:,,:, .:,,,,,,,,,,,,,:,,,,,,,,,,,,,:,!o$%!oo*ooooo!*%**$@%oo!!*$$@*@@@@@@@@@@
-@@@@@@* *@%oo*!**!!!!oooo!!!!!!!!!!!!!oo;oo**&@@8&&##$%%$%!*o;;:,,,:. .,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,;o%$!oo*ooooo!o%***@8!oo!*%$@*@@@@@@@@@@
-@@@@@@@@$@*!oo!o*o!o!oooo!!!o!!!!!!!!!oo;!o%@@@8#@#&%%$%*::*o:::,,,:,.,:,,,,,,,,,:,,,,,,,,,,,,,,,,,:,:o%&!oo*ooooooo%***&#ooo!**%$@$@@@@@@@@@
-@@@@@@@@!@%!o*!!*ooo!oo!*!!!!o;!!!!!!!oo;!*%@@#@@8%%$$*!::,*o,::,,,,::::,,,,,,,,,,::,,,,,,,,,,,,,,,:,:**&!oo*ooooooo****%@*!o!*%*$8@@@@@@@@@@
-@@@@@@@@!@*!*%!!oooo!oo!*!!!!o;!!!!!!!oo;$#%##@#$%%$%!::::,!!,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,:$*8!oo*oooooooo****&%!oo*%**$@$@@@@@@@@
-@@@@@@@@!@*!*$!!oooo!oo!*o!!!o!!!!!!!!oo*#@&#8#$%%%o;:::,:,:;,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,;8*8ooo*oooooooo****%%!oo%***%&@$@@@@@@@
-@@@@@@@@!@*!%&!!!ooo!oo!*o!!!o!!!!!oo!oo%@8$88%%$*!:,::,,,,,:,,,,,,,,,,,,,,,,,,,,,,,,:,,,,,,,,,,,,,:,;#*&o!o*oooooooo%****%oo%%****$&@@@@@@@@
-@@@@@@@@!@*!*#o!!oo!ooo!o*!o!oo;!!!oo!o!#&;o%&8%o::,:,,,,,,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,!@*&*!o*oo!oooo!%****%oo$%**%**$@*@@@@@@
-@@@@@@@@!@*o*%8o!o*oooo!o*!oo!o!!!!o*!o8&;:;!!%;::,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,::,,,,,,,,,,,,:,*@%&*!o*ooooooo!*%***$o*$%**%%*%&@&@@@@@
-@@@@@@@@!@%o**@*o!oo!oo!!*o!!!o!!o!!*!*&;:::!:,,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,;o,:,,,,,,,,,,,:,$@%$*!o*ooooooo!*%***%o%%****%%*%$@&@@@@
-@@@@@@@@$@%oo$@@*!!*o!oo!oo!o!oo!!!!*o*!,:::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,:o:,:,,,,,,,,,,:,,8@$$%!o*ooooooo!*&**%%o%*******%*%8@$@@@
-@@@@@@@@*@$**$@@$*!*o!oo!o*oo!o*!!o!*oo;,::,::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,;o:,:,,,,,,,,,,,:,;@@&%%!o*oooooooo!#$*%%%%*%******$%$&@*@@
-@@@@@@@@*@&*o%@$@%*o*ooo!!*oo!!*o!o!oo**,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;o:,:,,,,,,,,,,,,:,%@@8%%!oooooooooo!##*%%%***$******%$$o@@@
-@@@@@@@@@@@%o%@$$@%*oooo!!ooo!!o*;o!o*o#;,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,!!:,:,,,,,,,,,,,,,,:#@@#%%!oo!oo!oooo!&@$%%****%%******%%$ @ 
-@@@@@@@@@$@$o%@*@*@*ooooo!o*o!oo*!!oo*o@8,,:,,,,,,,,,,,,,,,,,,,,,,,,,,,::::,,,:;!:::,,,,,,,,,,,,,:,o@@@#%%!oo!ooooooo!$@@$******%%*******$$@*
-@@@@@@@@@*@8**$@@ @**!oooo!o*!!!*o!o!**#@$.:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,::;:,:,,,,,,,,,,,,,,,,:*@@@@%*ooo!ooooooo!%@@8*******%%*******%&o
-@@@@@@@@@@@@$*%@*@*@%ooooo!o%!!oo*!o!**#@@*.:,,,,,,,,,,,,,,,,,,,,,,,:,:;;!!!;;:,,:,,,,,,,,,,,,,,:,!o#@@@%oooooooooooo!*@@@$*******$%********%
-@@@@@@@@@@$@&**@$@@!@!!ooo!*#o!o!*!!oo*8@$8:.:,,,,,,,,,,,,,,,,,,,,,,:,:;;;;:::,:,,,,,,,,,,,,,,,:,:o!#@@@$oooooooooooo!o@@@@%*******$$******%%
-@@@@@@@@@@@@@%**@@@@$@oooo!*@$!o!**!oo*8@*$%,.:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,,,,,,,,,,,,,,,,,:,!!!#@@@$!ooooooooo!o!!#@@@8********&#&%*%%!:
-@@@@@@@@@@@*@$%%@%@@@ @!oo!%@#*!oo*!o!o8@*%$o..,,,,,,,,,,,,,,:,,,,,,,,:,,::,,,,,,,,,,,,,,,,,,,:,:!;!#@@@&!ooooooooo!oo!8@@@@&********&@#*;.:!
-@@@@@@@@@@@@$@%$%@$@@!@;!o!%@@&!o!*o!o!8@*o$*o..,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,,,,,,,,,,:,;!;;#@@@&!oo!!oooooooo!&@@@@@%******%%o, ;*;!
-@@@@@@@@@@@@@$@$$*@*  @;oo!$@@@%!oo*!o!$@oo$*%*..,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,:!;;;8@@@8!o*oooooooooo!$@@@@@@%***%%!. ,$@%.%
-@@@@@@@@@@@@@@$@$%*;@@@@*o!&@@@@o!o*o!!*#o!%%*%o .,:,,,,,,,,,,,,,,,,,,,,,,,,,:,,,,,,,,,,,,,,,,,;!;;;8@@@#ooo!ooooooooo!%@@@@@@#%%*;. ,%@@@o.&
-@@@@@@@@@@@@@@@$@o*o: *@*o!&@@@@8o!o*!oo&*!%%**$! .,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:;;;!;&@@@#ooo!ooooooooo!*@@@@@@@$;. .*@@@@@;,8
-@@@@@@@@@@@@@@@@*@@*: $@*o!&@@@@@&!o**!!%*!*%***$; .,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:;;;;!;$@@@#oo!!ooooooooo!*@@@@@#!. .!8@@@@@#::@
-@@@@@@@@@@@@@@@@@@*@@@$@*o!$@@@@@@%!o%o!o%oo*****&; .,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,;!;!;!;$@@@@o*!!ooooo*ooo!oo,$8*.  ,$@@@@@@@8,!@
-@@@@@@@@@@@@@@@@@@@@@@ @oo!%#@@@@@@%!*%!o**o******&: .,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,:!;;;;!;%@@@@o*;!ooooo%ooo!o; ..  .o@@@@@@@@@&.o@
-@@@@@@@@@@@@@@@@@@@@@@@@ oo%$&@@@@@@*!%*!o%o*******8; ..,:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,:*!;;;;!;*@@@@*o;oooooo%*!o!o; .. ,$@@@@@@@@@@%.%@
-@@@@@@@@@@@@@@@@@@@@@@@@@!*$$o&@@@@@@*o%!*********o%#!  .,:::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,&*;!;;;!;o@@@&o*;ooooo!$*!oo!o,  ;#@@@@@@@@@@@o.&@
-@@@@@@@@@@@@@@@@@@@@@@@@@!%$&*!$@@@@@@%*%***%******o%#&:  .,,:::,,,,,,,,,,,,,:,:::,,,,,::,$8;;;!;;!;!#@$!*o;ooo!o!$%!oo!8#,*@@@@@@@@@@@@@!,8@
-@@@@@@@@@@@@@@@@@@@@@@@$@%$&8*o!%@@@##$*%oo*%********&@@&!.  .,,:::,,,,:,,:,,,:,,,,,,,::,*@*;!;;;!;;o$!:%*o;ooooo!%$!oo!&@#@@@@@@@@@@@@@@::#@
-@@@@@@@@@@@@@@@@@@@@@@@$@$88#*ooo@@@%o!o*%*o*%*******&@@@@#%o:. ..,,:::,:,,:::,;o!,:,::,*@&;!;;;;;!*o,,$8*!!ooooo!%&!oo!$@@@@@@@@@@@@@@@#,;@@
-@@@@@@@@@@@@@@@@@@@@@@@@@&###*ooo#@@o!ooo*%**$&%****o&@@@@@@@@8%o;,..,,!oo;,,,;!:!;,:,,*@@o;!;!;;o*;.:&@&*!!ooooo!%&!oo!%@@@@@@@@@@@@@@@8,o@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@#*oo!&@#ooooo!%%**%$$%**o&@@@@@@@@@@@@#&%oo!,:!o;:!,,:!,,:%@@$;!;!;!oo,.!#@#!*!oooooo!%8!ooo*@@@@@@@@@@@@@@@$.*@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*oo!$@8ooooooo*%*******o$@@@@@@@@@@@@@@@@*,:,,:$8:,:,*&8@@@#!;!;;!*;,,%@@#;:%;oooooo!*8oooo%#@@@@@@@@@@@@@@%.$@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%oo!%@&!ooooooo$%******o$@@@@@@@@@@@@@@@*,:,,:,:*:,:,o@@@@@*;!;;oo:.;8@@&:,$*;oooooo!*#o!oo%8@@@@@@@@@@@@@@*.&@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%!o!*@$!oo*ooooo$%*****o$@@@@@@@@@@@@@@%,:,,,,:,:!:,,;@@@@$;!;!*!,,*@@@%,;8@*;oooooo!*#*!o!$8@@@@@@@@@@@@@@!,8@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$ooo*@%!o*%!oooo*%*****o%@@@@@@@@@@@@@$,::,,,,::,:!;,:8@@#!;;oo:.;8@@#!,%@@@o!oooooooo#*!o!&&@@@@@@@@@@@@@@;,#@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&ooo*@*o!%%!oooo******%o%@@@@@@@@@@@@&,,:,,:,:,,,:!%o,&@@o;!*!,,*@@@$:o#@@@@!!oooooooo#*!o!&8#@@@@@@@@@@@@@::@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8oooo#*o!&$!oooo******%o%@@@@@@@@@@@8,,:,,:,:,:;o!;,*;*@%;*o:.!8@@#o!8@@@@@@!!ooooooo!8%!o!&#8@@@@@@@@@@@@@:;@@#
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#oooo8oo!8&!oooo*********@@@@@@@@@@#:,:,::,:!!o!:,,,:*o&o*;,:$@@@$;$@@@@@@@#!oooooooo!8$!o!$@&@@@@@@@@@@@@8,o@@8
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*oo*&oo!88!oooo******%**@@@@@@@@@@;.:,,,,!*o;:,,:,:,!*o;,:%@@@#;;#@@@@@@@@&;oooooooo!&$!o!%@&@@@@@@@@@@@@8,*@@&
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%!!*&!o!8#!oooo******%**@@@@@@@@@!.:,,:;oo;,,,:::,,,:%;;$@@#@@*,#@@@@@@@@@%;oooooooo!$$!o!*@&#@@@@@@@@@@@&.%@@$
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$!!%$!oo##oooo*******%**@@@@@@@@! ::;!!;:,,::::,,,:;;$8@@@8.*@%!@@@@@@@@@@*;oooooooo!$&!o!*@88@@@@@@@@@@@$.&@@*
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$!!$%!oo@@oooo*%*****%%o#@@@@@@o ::;;:,,,::,,,,:!o!;:!#@@@o  !&!@@@@@@@@@@o!oooooooo!%&!ooo@@&@@@@@@@@@@@%,8@@*
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%!o&*!!*@@*!oo*******%%o#@@@@@o :;,,,,::,,,::!o!;:,,,,$@@8:,. :!8@@@@@@@@@!!oooooooo!%&!ooo#@&@@@@@@@@@@@*,#@@o
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#*oo$oo!%@@%!oo*******%%o8@@@@* ,:,,,,,,,:;!o!;:,,,:::,!@@*::.:.,%@@@@@@@@#;ooooooooo!*&!ooo8@&#@@@@@@@@@@o:@@#o
-@@@@@@@@@@@@@@@@@@@@@@@@@@@!@8ooo$oo!&@@$!oo%******%%o8@@@% .,,,:;!!!!!!;:,,,:::,,:,,8@:;: ,;..&@@@@@@@8;oooooooooo*$!oo!8@8&@@@@@@@@@@!;@@#o
-@@@@@@@@@@@@@@@@@@@@@@@@@@@*@$o!*%!oo8@@&!oo%*******%o&@@8..,:,:!!;;;:,,,,::,,,,,,,:,$&,;.  .;,.$@@@@@@&;o!oo*oooooo$!oo!&@@&@@@@@@@@@@!!@@8o
-@@@@@@@@@@@@@@@@@@@@@@@@@@@*@*o!**ooo@@@8!o*%******%$o&@@8 .:,,::,,,,,::::,,::,,,:::,**,:, . .;: %@@@@@%;oooo*oooooo%oo*o$@@&#@@@@@@@@@;o@@&*
-@@@@@@@@@@@@@@@@@@@@@@@@@@@$@**!*oo!*@@@8oo*%*******$o&@@@:.:,:,,:::,,,,,::,,,:::,,:,!%,:,.    :; *@@@@*!oooo*oooooo%o!%*%@@88@@@@@@@@@:*@@$*
-@@@@@@@@@@@@@@@@@@@@@@@@@@@$@%ooooo!$@@@#o!*%*******$o$@@@o ,:,:,:,,,,,,,,,,;!o*o!!o!:%:,:::;;;,;: o@@@o!oooo*oooooo%o!$**@@@$@@@@@@@@@:%@@%%
-@@@@@@@@@@@@@@@@@@@@@@@@@@@$@%ooooo!8@@@#o!*%*******$*$@@@& ,:,,:,,:;;;::;;o**o!;::,!;*;,:!!!!!!o;,.%@@!!ooo!%o!oooo%o!&%*@@@&#@@@@@@@#:$@@*$
-
+⣿⠿⠿⠶⠿⢿⣿⣿⣿⣿⣦⣤⣄⢀⡅⢠⣾⣛⡉⠄⠄⠄⠸⢀⣿⠄ ⢀⡋⣡⣴⣶⣶⡀⠄⠄⠙⢿⣿⣿⣿⣿⣿⣴⣿⣿⣿⢃⣤⣄⣀⣥⣿⣿⠄
+⢸⣇⠻⣿⣿⣿⣧⣀⢀⣠⡌⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⣿⣿⣿⠄⢸⣿⣷⣤⣤⣤⣬⣙⣛⢿⣿⣿⣿⣿⣿⣿⡿⣿⣿⡍⠄⠄⢀⣤⣄⠉⠋⣰
+⣖⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⢇⣿⣿⡷⠶⠶⢿⣿⣿⠇⢀⣤ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣷⣶⣥⣴⣿⡗ 
+⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠄ ⣦⣌⣛⣻⣿⣿⣧⠙⠛⠛⡭⠅⠒⠦⠭⣭⡻⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠄ 
+⣿⣿⣿⣿⣿⣿⣿⡆⠄⠄⠄⠄⠄⠄⠄⠄⠹⠈⢋⣽⣿⣿⣿⣿⣵⣾⠃⠄ ⣿⣿⣿⣿⣿⣿⣿⣿⠄⣴⣿⣶⣄⠄⣴⣶⠄⢀⣾⣿⣿⣿⣿⣿⣿⠃⠄⠄ 
+⠈⠻⣿⣿⣿⣿⣿⣿⡄⢻⣿⣿⣿⠄⣿⣿⡀⣾⣿⣿⣿⣿⣛⠛⠁⠄⠄⠄ ⠄⠄⠈⠛⢿⣿⣿⣿⠁⠞⢿⣿⣿⡄⢿⣿⡇⣸⣿⣿⠿⠛⠁⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠉⠻⣿⣿⣾⣦⡙⠻⣷⣾⣿⠃⠿⠋⠁⠄⠄⠄⠄⠄⢀⣠⣴ ⣿⣶⣶⣮⣥⣒⠲⢮⣝⡿⣿⣿⡆⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣠
 ]]
 
+
+--[[
+New stuff added:
+ - Triggerbot Added
+ - DeadHP & DeadAmmo changed into dropdown
+ - Improved the autofarm a little
+
+TODO:
+ - add aimbot
+ - need new esp library
+ - other stuff i need to add but forgotten
+]]--
 
 
 local CoreGui = game:GetService("StarterGui")
@@ -149,12 +60,13 @@ game:GetService("RunService").Heartbeat:connect(function(step)if flying and c an
 
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bitef4/Recode/main/UI/Kavo_1.lua"))()
-local Window = Library.CreateLib("AdvanceTech | Arsenal | v1.6 ", "BlueTheme")
+local Window = Library.CreateLib("AdvanceTech | Arsenal | v1.7 ", "BlueTheme")
 
 local Welcome = Window:NewTab("Main")
 local MainSection = Welcome:NewSection("Welcome To AdvanceTech | " .. game.Players.LocalPlayer.Name)
 
 local HitboxSection = Welcome:NewSection("> Hitbox Settings <")
+local triggerbot = Welcome:NewSection("> Triggerbot <")
 
 local hitboxEnabled = false
 local noCollisionEnabled = false
@@ -173,11 +85,11 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
 local WarningText = Instance.new("TextLabel", ScreenGui)
-
+-- useless
 WarningText.Size = UDim2.new(0, 200, 0, 50)
 WarningText.TextSize = 16
 WarningText.Position = UDim2.new(0.5, -150, 0, 0)
-WarningText.Text = "Warning: There may be a bug that causes collisions."
+WarningText.Text = "" -- made it into empty string, you can add whatever
 WarningText.TextColor3 = Color3.new(1, 0, 0)
 WarningText.BackgroundTransparency = 1
 WarningText.Visible = false
@@ -355,7 +267,7 @@ HitboxSection:NewToggle("No Collision", '?', function(enabled)
     end)()
 end)
 
-MainSection:NewToggle("AutoFarm", "?", function(bool) -- its really trash but it works man ok :<
+MainSection:NewToggle("AutoFarm", "?", function(bool)
     getgenv().AutoFarm = bool
 
     local runServiceConnection
@@ -365,7 +277,7 @@ MainSection:NewToggle("AutoFarm", "?", function(bool) -- its really trash but it
 
     game:GetService("ReplicatedStorage").wkspc.CurrentCurse.Value = bool and "Infinite Ammo" or ""
 
-    function getClosestEnemyPlayer()
+    function closestplayer()
         local closestDistance = math.huge
         local closestPlayer = nil
 
@@ -376,7 +288,7 @@ MainSection:NewToggle("AutoFarm", "?", function(bool) -- its really trash but it
                 local humanoid = character:FindFirstChild("Humanoid")
                 if humanoidRootPart and humanoid and humanoid.Health > 0 then
                     local distance = (player.Character.HumanoidRootPart.Position - humanoidRootPart.Position).Magnitude
-                    if distance < closestDistance and humanoidRootPart.Position.Y >= 0 then
+                    if distance < closestDistance then
                         closestDistance = distance
                         closestPlayer = enemyPlayer
                     end
@@ -387,22 +299,26 @@ MainSection:NewToggle("AutoFarm", "?", function(bool) -- its really trash but it
         return closestPlayer
     end
 
-    local function startAutoFarm()
+    local function AutoFarm()
         game:GetService("ReplicatedStorage").wkspc.TimeScale.Value = 12
 
         runServiceConnection = game:GetService("RunService").Stepped:Connect(function()
             if getgenv().AutoFarm then
-                local closestPlayer = getClosestEnemyPlayer()
-                if closestPlayer then
-                    local targetPosition = closestPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 0, -4)
-                    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-                        player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPosition)
-                        camera.CFrame = CFrame.new(camera.CFrame.Position, closestPlayer.Character.Head.Position)
+                local closestPlayer = closestplayer()
+                if closestPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    local enemyRootPart = closestPlayer.Character.HumanoidRootPart
 
-                        if not mouseDown then
-                            mouse1press()
-                            mouseDown = true
-                        end
+                    local targetPosition = enemyRootPart.Position - enemyRootPart.CFrame.LookVector * 2 + Vector3.new(0, 2, 0)
+                    player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPosition)
+
+                    if closestPlayer.Character:FindFirstChild("Head") then
+                        local enemyHead = closestPlayer.Character.Head.Position
+                        camera.CFrame = CFrame.new(camera.CFrame.Position, enemyHead)
+                    end
+
+                    if not mouseDown then
+                        mouse1press()
+                        mouseDown = true
                     end
                 else
                     if mouseDown then
@@ -425,14 +341,14 @@ MainSection:NewToggle("AutoFarm", "?", function(bool) -- its really trash but it
 
     local function onCharacterAdded(character)
         wait(0.5)
-        startAutoFarm()
+        AutoFarm()
     end
 
     player.CharacterAdded:Connect(onCharacterAdded)
 
     if bool then
         wait(0.5)
-        startAutoFarm()
+        AutoFarm()
     else
         game:GetService("ReplicatedStorage").wkspc.CurrentCurse.Value = ""
         getgenv().AutoFarm = false
@@ -447,6 +363,73 @@ MainSection:NewToggle("AutoFarm", "?", function(bool) -- its really trash but it
         end
     end
 end)
+
+
+getgenv().triggerb = false
+local teamcheck = "Team-Based"
+local delay = 0.2
+local isAlive = true
+
+triggerbot:NewToggle("Enable Triggerbot", "triggerbot on or off", function(state)
+    getgenv().triggerb = state
+end)
+
+triggerbot:NewDropdown("Team Check Mode", "teamchecking mode", {"FFA", "Team-Based", "Everyone"}, function(selected)
+    teamcheck = selected
+end)
+
+triggerbot:NewSlider("Shot Delay", "delay between shots (1-10)", 10, 1, function(value)
+    delay = value / 10
+end)
+
+local function isEnemy(targetPlayer)
+    if teamcheck == "FFA" then
+        return true
+    elseif teamcheck == "Everyone" then
+        return targetPlayer ~= game.Players.LocalPlayer
+    elseif teamcheck == "Team-Based" then
+        local localPlayerTeam = game.Players.LocalPlayer.Team
+        return targetPlayer.Team ~= localPlayerTeam
+    end
+    return false
+end
+
+local function checkhealth()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid then
+        humanoid.HealthChanged:Connect(function(health)
+            isAlive = health > 0
+        end)
+    end
+end
+
+game.Players.LocalPlayer.CharacterAdded:Connect(checkhealth)
+checkhealth()
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if getgenv().triggerb and isAlive then
+        local player = game.Players.LocalPlayer
+        local mouse = player:GetMouse()
+        local target = mouse.Target
+        if target and target.Parent:FindFirstChild("Humanoid") and target.Parent.Name ~= player.Name then
+            local targetPlayer = game:GetService("Players"):FindFirstChild(target.Parent.Name)
+            if targetPlayer and isEnemy(targetPlayer) then
+                mouse1press()
+                wait(delay)
+                mouse1release()
+            end
+        end
+    end
+end)
+
+
+
+
+
+
 
 
 
@@ -714,7 +697,7 @@ PlayerSection:NewToggle("Anti-Aim v1", "Toggle anti-aim feature", function(value
     local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
     
     if value then
-        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.thirdperson.Value = true
+        -- game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.thirdperson.Value = true
 
         if humanoidRootPart then
             local spin = Instance.new("BodyAngularVelocity")
@@ -732,7 +715,7 @@ PlayerSection:NewToggle("Anti-Aim v1", "Toggle anti-aim feature", function(value
             gyro.Parent = humanoidRootPart
         end
     else
-        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.thirdperson.Value = false
+        -- game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.thirdperson.Value = false
 
         if humanoidRootPart then
             local spin = humanoidRootPart:FindFirstChild("AntiAimSpin")
@@ -765,42 +748,51 @@ end)
 
 
 PlayerSection:NewLabel("> Object Teleport <")
-local autoHealEnabled = false
-local autoAmmoEnabled = false
 
-PlayerSection:NewToggle("DeadHP (AutoHeal)", "MMSVon made this", function(enabled)
-    autoHealEnabled = enabled
-    managePickups()
+local debris_selected = "Both"
+local debris_options = {"DeadHP", "DeadAmmo", "Both"}
+local isCollecting = false
+
+PlayerSection:NewToggle("Enable Collect debris", "object teleport to you", function(enabled)
+    isCollecting = enabled
+    if enabled then
+        managePickups()
+    end
 end)
 
-PlayerSection:NewToggle("DeadAmmo (Inf-Ammo)", "MMSVon made this", function(enabled)
-    autoAmmoEnabled = enabled
-    managePickups()
+PlayerSection:NewDropdown("Select Object", "Choose DeadHP, DeadAmmo, or Both", debris_options, function(selection)
+    debris_selected = selection
 end)
 
 function managePickups()
-    if autoHealEnabled or autoAmmoEnabled then
-        spawn(function()
-            while autoHealEnabled or autoAmmoEnabled do
-                wait()
-                pcall(function()
-                    local player = game.Players.LocalPlayer
-                    local character = player.Character
-                    if character then
-                        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
-                        if humanoidRootPart then
-                            for _, v in pairs(game.Workspace.Debris:GetChildren()) do
-                                if (autoHealEnabled and v.Name == "DeadHP") or (autoAmmoEnabled and v.Name == "DeadAmmo") then
-                                    v.CFrame = humanoidRootPart.CFrame
-                                end
+    spawn(function()
+        while isCollecting do
+            wait(0.1)
+            pcall(function()
+                local player = game.Players.LocalPlayer
+                local character = player.Character
+                if character then
+                    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+                    if humanoidRootPart then
+                        for _, v in pairs(game.Workspace.Debris:GetChildren()) do
+                            if (debris_selected == "DeadHP" and v.Name == "DeadHP") or
+                               (debris_selected == "DeadAmmo" and v.Name == "DeadAmmo") or
+                               (debris_selected == "Both" and (v.Name == "DeadHP" or v.Name == "DeadAmmo")) then
+                                --/ dont ask i was trying something out
+                                --   local offsetX = math.random(-5, 5) / 10
+                                --   local offsetY = math.random(1, 3) / 10
+                                --   local offsetZ = math.random(-5, 5) / 10
+                                --   v.CFrame = rootPart.CFrame * CFrame.new(offsetX, offsetY, offsetZ)
+                                v.CFrame = humanoidRootPart.CFrame * CFrame.new(0, 0.2, 0)
                             end
                         end
                     end
-                end)
-            end
-        end)
-    end
+                end
+            end)
+        end
+    end)
 end
+
 
 PlayerSection:NewLabel("> Useful Cheat <")
 
@@ -1057,13 +1049,122 @@ local function enableParticles()
     end
   end
   
-  Extra:NewToggle("Mees up your screen lol", "?", function(state)
+  Extra:NewToggle("Mess up your screen lol", "?", function(state)
     if state then
       enableParticles()
     else
       disableParticles()
     end
   end)
+
+  local Players = game:GetService("Players")
+  local LocalPlayer = Players.LocalPlayer
+  
+  local original_stats = { Score = nil, Kills = nil }
+  Extra:NewToggle("Max Level???", "e", function(bool)
+      local stats = LocalPlayer.CareerStatsCache
+      if bool then
+          if not original_stats.Score then
+              original_stats.Score = stats.Score.Value
+          end
+          if not original_stats.Kills then
+              original_stats.Kills = stats.Kills.Value
+          end
+          stats.Score.Value = 1e18
+          stats.Kills.Value = 1e14
+      else
+          if original_stats.Score and original_stats.Kills then
+              stats.Score.Value = original_stats.Score
+              stats.Kills.Value = original_stats.Kills
+          end
+      end
+  end)
+  
+  local Players = game:GetService("Players")
+  local LocalPlayer = Players.LocalPlayer
+  local Workspace = game:GetService("Workspace")
+  
+  local original_names = {
+      GUIName = nil,
+      GUIName2 = nil,
+      KillFeed = {},
+      WinnerName = nil,
+      ScorecardName = nil
+  }
+  
+  local hidename = false
+  local runLoop = false
+  
+  local function names()
+      local edited_name = "AdvanceChan UwU"
+      local edited_killfeed = "UwU im a horny femboy who needs a big BBC"
+  
+      local gui = LocalPlayer.PlayerGui
+      gui.GUI_Scorecard.Scorecard.Scrolling.Visible = false
+      gui.Menew_Main.Container.PlrName.Text = edited_name
+      gui.Menew_Main.Container.PlrName2.Text = edited_name
+      Workspace.KillFeed["1"].Killer.Value = edited_killfeed
+      Workspace.KillFeed["2"].Killer.Value = edited_killfeed
+      Workspace.KillFeed["3"].Killer.Value = edited_killfeed
+      Workspace.KillFeed["4"].Killer.Value = edited_killfeed
+      Workspace.KillFeed["5"].Killer.Value = edited_killfeed
+      Workspace.KillFeed["6"].Killer.Value = edited_killfeed
+      gui.GUI.Winner.Visible = false
+      gui.GUI_Scorecard.Scorecard.PlayerCard.Username.Text = "AdvanceFalling Team"
+  end
+  
+  local function restores_name()
+      local gui = LocalPlayer.PlayerGui
+  
+      if original_names.GUIName then
+          gui.Menew_Main.Container.PlrName.Text = original_names.GUIName
+      end
+  
+      if original_names.GUIName2 then
+          gui.Menew_Main.Container.PlrName2.Text = original_names.GUIName2
+      end
+  
+      for i, v in pairs(original_names.KillFeed) do
+          Workspace.KillFeed[tostring(i)].Killer.Value = v
+      end
+  
+      if original_names.WinnerName ~= nil then
+          gui.GUI.Winner.Visible = original_names.WinnerName
+      end
+  
+      if original_names.ScorecardName then
+          gui.GUI_Scorecard.Scorecard.PlayerCard.Username.Text = original_names.ScorecardName
+      end
+  end
+  
+  Extra:NewToggle("change Name", "weird name", function(enabled) -- its not perfect, it doesnt change all your name in the killfeed :shrug:
+      hidename = enabled
+      runLoop = enabled
+  
+      if hidename then
+          local gui = LocalPlayer.PlayerGui
+          original_names.GUIName = gui.Menew_Main.Container.PlrName.Text
+          original_names.GUIName2 = gui.Menew_Main.Container.PlrName2.Text
+          original_names.WinnerName = gui.GUI.Winner.Visible
+          original_names.ScorecardName = gui.GUI_Scorecard.Scorecard.PlayerCard.Username.Text
+  
+          for i = 1, 6 do
+              original_names.KillFeed[i] = Workspace.KillFeed[tostring(i)].Killer.Value
+          end
+  
+          --  loop
+          spawn(function()
+              while runLoop do
+                  pcall(names)
+                  wait(0.2)
+              end
+          end)
+      else
+          runLoop = false
+          restores_name()
+      end
+  end)
+  
   
 
 
@@ -1164,13 +1265,13 @@ end)
 local esp = Visual:NewSection("> Random ESP <")
 --esp:NewLabel("> Random ESP <")
 local esp_data = {} 
-local espTilesName = 'dontfuckingask'
+local esp_title = 'dontfuckingask'
 
-local function createESP(parent, label)
+local function esps(parent, label)
     local BillboardGui = Instance.new('BillboardGui')
     local TextLabel = Instance.new('TextLabel')
 
-    BillboardGui.Name = espTilesName
+    BillboardGui.Name = esp_title
     BillboardGui.Parent = parent
     BillboardGui.AlwaysOnTop = true
     BillboardGui.Size = UDim2.new(0, 50, 0, 50)
@@ -1190,8 +1291,8 @@ end
 local function applyESP(object, label)
     if object:IsA('TouchTransmitter') then
         local parent = object.Parent
-        if not parent:FindFirstChild(espTilesName) then
-            local newESP = createESP(parent, label)
+        if not parent:FindFirstChild(esp_title) then
+            local newESP = esps(parent, label)
             esp_data[parent] = newESP
         end
     end
@@ -1231,7 +1332,6 @@ end)
 --// Setting \\--
 local Setting = Window:NewTab("Setting")
 local Section = Setting:NewSection("> Performance <")
--- i had to FUCKING modify the whole thing to be toggabled =w=
 local originalMaterials = {}
 local originalDecalsTextures = {}
 local originalLightingSettings = {
@@ -1489,87 +1589,62 @@ end)
 local Section = Credit:NewSection("UI Framework: Kavo.")
 local Section = Credit:NewSection("Report Non-Functional Bugs Scripts on Discord")
 Section:NewButton("Copy Discord Link", "Discord", function()
-    setclipboard("https://discord.gg/FuZCM5X8TW")
+    setclipboard("https://discord.com/invite/d2446gBjfq")
 end)
 
 
 
 --// Gui Button \\--
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("ImageLabel")
-local TextButton = Instance.new("TextButton")
+local gui = Instance.new("ScreenGui", game.Players.LocalPlayer:WaitForChild("PlayerGui"))
+local frame = Instance.new("ImageLabel", gui)
+local button = Instance.new("TextButton", frame)
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+frame.BackgroundTransparency = 1
+frame.Position = UDim2.new(0, 0, 0.65, -100)
+frame.Size = UDim2.new(0, 100, 0, 50)
+frame.Image = "rbxassetid://3570695787"
+frame.ImageColor3 = Color3.fromRGB(11, 18, 7)
+frame.ImageTransparency = 0.2
+frame.ScaleType = Enum.ScaleType.Slice
+frame.SliceCenter = Rect.new(100, 100, 100, 100)
+frame.SliceScale = 0.12
 
-Frame.Name = "Frame"
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.BackgroundTransparency = 1.000
-Frame.Position = UDim2.new(0, 0, 0.65, -100) 
-Frame.Size = UDim2.new(0, 100, 0, 50)
-Frame.Image = "rbxassetid://3570695787"
-Frame.ImageColor3 = Color3.fromRGB(11, 18, 7)
-Frame.ImageTransparency = 0.200
-Frame.ScaleType = Enum.ScaleType.Slice
-Frame.SliceCenter = Rect.new(100, 100, 100, 100)
-Frame.SliceScale = 0.120
-Frame.Active = true
-Frame.ZIndex = 10
-
-TextButton.Parent = Frame
-TextButton.AnchorPoint = Vector2.new(0, 0.5)
-TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.BackgroundTransparency = 1.000
-TextButton.Position = UDim2.new(0.022162716, 0, 0.85, -20)
-TextButton.Size = UDim2.new(1, -10, 1, 0) 
-TextButton.Font = Enum.Font.SourceSans
-TextButton.Text = "Toggle"
-TextButton.TextColor3 = Color3.fromRGB(0, 34, 255)
-TextButton.TextSize = 20.000
-TextButton.TextWrapped = true
-TextButton.ZIndex = 11 
-TextButton.MouseButton1Down:Connect(function()
-  Library:ToggleUI()
+button.AnchorPoint = Vector2.new(0, 0.5)
+button.BackgroundTransparency = 1
+button.Position = UDim2.new(0.022, 0, 0.85, -20)
+button.Size = UDim2.new(1, -10, 1, 0)
+button.Font = Enum.Font.SourceSans
+button.Text = "Toggle"
+button.TextColor3 = Color3.fromRGB(0, 34, 255)
+button.TextSize = 20
+button.TextWrapped = true
+button.ZIndex = 11
+button.MouseButton1Down:Connect(function()
+    Library:ToggleUI()
 end)
 
-local draggingEnabled = false
-local dragStartPos = nil
-local frameStartPos = nil
-
-local function updatePosition(input)
-  local delta = input.Position - dragStartPos
-  Frame.Position = UDim2.new(
-    frameStartPos.X.Scale,
-    frameStartPos.X.Offset + delta.X,
-    frameStartPos.Y.Scale,
-    frameStartPos.Y.Offset + delta.Y
-  )
+local dragging, dragStart, startPos = false, nil, nil
+local function update(input)
+    local delta = input.Position - dragStart
+    frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 end
 
-TextButton.InputBegan:Connect(function(input)
-  if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-    draggingEnabled = true
-    dragStartPos = input.Position
-    frameStartPos = Frame.Position
-  end
+button.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = frame.Position
+    end
 end)
 
-TextButton.InputEnded:Connect(function(input)
-  if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-    draggingEnabled = false
-  end
+button.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = false
+    end
 end)
 
-TextButton.InputChanged:Connect(function(input)
-  if draggingEnabled and
-      (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-    updatePosition(input)
-  end
-end)
-
-Frame.InputChanged:Connect(function(input)
-  if draggingEnabled and
-      (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-    updatePosition(input)
-  end
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        update(input)
+    end
 end)
