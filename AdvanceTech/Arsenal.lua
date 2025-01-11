@@ -267,7 +267,7 @@ HitboxSection:NewToggle("No Collision", '?', function(enabled)
     end)()
 end)
 
-MainSection:NewToggle("AutoFarm", "?", function(bool)
+MainSection:NewToggle("AutoFarm", "?", function(bool)  -- its really trash but it works man ok :<
     getgenv().AutoFarm = bool
 
     local runServiceConnection
