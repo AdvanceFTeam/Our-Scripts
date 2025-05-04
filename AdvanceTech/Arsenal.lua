@@ -15,11 +15,6 @@
 
 
 --[[
-New stuff added:
- - Triggerbot Added
- - DeadHP & DeadAmmo changed into dropdown
- - Improved the autofarm a little
-
 TODO:
  - add aimbot
  - need new esp library
@@ -59,13 +54,66 @@ game:GetService("RunService").Heartbeat:connect(function(step)if flying and c an
 
 
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bitef4/Recode/main/UI/Kavo_1.lua"))()
-local Window = Library.CreateLib("AdvanceTech | Arsenal | v1.7 ", "BlueTheme")
 
-local Welcome = Window:NewTab("Main")
+local Library    = loadstring(game:HttpGet("https://raw.githubusercontent.com/bitef4/Recode/main/UI/Kavo_1.lua"))()
+local Window     = Library.CreateLib("AdvanceTech | Arsenal | v1.9", "BlueTheme")
+
+local Welcome     = Window:NewTab("Main")
 local MainSection = Welcome:NewSection("Welcome To AdvanceTech | " .. game.Players.LocalPlayer.Name)
-
 local HitboxSection = Welcome:NewSection("> Hitbox Settings <")
+local SilentTab   = Welcome:NewSection("> Silent Aim <")
+
+
+local silentAim = loadstring(game:HttpGet("https://raw.githubusercontent.com/YellowGregs/Loadstring/refs/heads/main/Arsenal_Silent-Aim.luau"))()
+
+SilentTab:NewToggle("Enable Silent Aim", "Toggle silent aim feature", function(state)
+    silentAim.Enabled = state
+end)
+-- :p
+SilentTab:NewDropdown("Body Parts", "Select body parts to aim at", {
+    "Head", "UpperTorso", "LowerTorso", "LeftArm", "RightArm", "LeftLeg", "RightLeg", "Random"
+}, function(selected)
+    if selected == "Random" then
+        silentAim.UseRandomPart = true
+        silentAim.BodyParts = {
+            "Head", "UpperTorso", "LowerTorso",
+            "LeftArm", "RightArm", "LeftLeg", "RightLeg"
+        }
+    else
+        silentAim.UseRandomPart = false
+        silentAim.BodyParts = { selected }
+    end
+end)
+
+SilentTab:NewToggle("Enable Team Check", "Toggle team checking", function(state)
+    silentAim.TeamCheck = state
+end)
+
+SilentTab:NewToggle("Enable Wall Check", "Toggle wall penetration checks", function(state)
+    silentAim.WallCheck = state
+end)
+
+SilentTab:NewToggle("Enable Prediction", "Enable bullet prediction", function(state)
+    silentAim.Prediction.Enabled = state
+end)
+
+SilentTab:NewSlider("Prediction Amount", "Adjust prediction strength", 100, 0, function(value)
+    silentAim.Prediction.Amount = value / 1000
+end)
+
+SilentTab:NewToggle("Enable FOV Circle", "Toggle FOV circle visibility", function(state)
+    silentAim.FovSettings.Visible = state
+end)
+
+SilentTab:NewColorPicker("FOV Circle Color", "Change FOV circle color", Color3.fromRGB(255, 0, 0), function(color)
+    silentAim.FovSettings.Color = color
+end)
+
+SilentTab:NewSlider("FOV Circle Size", "Adjust FOV circle size", 1000, 1, function(value)
+    silentAim.Fov = value
+end)
+
+
 local triggerbot = Welcome:NewSection("> Triggerbot <")
 
 local hitboxEnabled = false
@@ -1262,10 +1310,9 @@ C:NewColorPicker("ESP Color", "?", Color3.fromRGB(255, 255, 255), function(P)
   aj.Color = P
 end)
 
-local esp = Visual:NewSection("> Random ESP <")
---esp:NewLabel("> Random ESP <")
+local espSection = Visual:NewSection("> ESP Options <")
 local esp_data = {} 
-local esp_title = 'dontfuckingask'
+local esp_title = 'dontask'
 
 local function esps(parent, label)
     local BillboardGui = Instance.new('BillboardGui')
@@ -1321,11 +1368,11 @@ local function toggleESP(enable, name, label)
     end
 end
 
-esp:NewToggle('Ammo Box ESP', '?', function(enabled)
+espSection:NewToggle('Ammo Box ESP', '?', function(enabled)
     toggleESP(enabled, 'DeadAmmo', 'Ammo Box')
 end)
 
-esp:NewToggle('HP Jug ESP', '?', function(enabled)
+espSection:NewToggle('HP Jug ESP', '?', function(enabled)
     toggleESP(enabled, 'DeadHP', 'HP Jar')
 end)
 
