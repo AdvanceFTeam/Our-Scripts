@@ -66,7 +66,7 @@ local SilentTab   = Welcome:NewSection("> Silent Aim <")
 
 local silentAim = loadstring(game:HttpGet("https://raw.githubusercontent.com/YellowGregs/Loadstring/refs/heads/main/Arsenal_Silent-Aim.luau"))()
 
-SilentTab:NewToggle("Enable Silent Aim", "Toggle silent aim feature", function(state)
+SilentTab:NewToggle("Enable Silent Aim", "silent aim ", function(state)
     silentAim.Enabled = state
 end)
 -- :p
@@ -85,11 +85,11 @@ SilentTab:NewDropdown("Body Parts", "Select body parts to aim at", {
     end
 end)
 
-SilentTab:NewToggle("Enable Team Check", "Toggle team checking", function(state)
+SilentTab:NewToggle("Enable Team Check", "teacheck", function(state)
     silentAim.TeamCheck = state
 end)
 
-SilentTab:NewToggle("Enable Wall Check", "Toggle wall penetration checks", function(state)
+SilentTab:NewToggle("Enable Wall Check", "?", function(state)
     silentAim.WallCheck = state
 end)
 
