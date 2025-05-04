@@ -30,7 +30,7 @@ CoreGui:SetCore("SendNotification", {
 })
 
 game:GetService("StarterGui"):SetCore("SendNotification", {
-  Title = "Modify By:",
+  Title = "Maded By:",
   Text = "AdvancedFalling Team",
   Icon = "rbxthumb://type=Asset&id=13508183954&w=150&h=150",
   Duration = 8,
