@@ -315,7 +315,7 @@ HitboxSection:NewToggle("No Collision", '?', function(enabled)
     end)()
 end)
 
-MainSection:NewToggle("AutoFarm", "?", function(bool)  -- its really trash but it works man ok :<
+MainSection:NewToggle("AutoFarm [Could get you ban]", "?", function(bool)  -- its really trash but it works man ok :<
     getgenv().AutoFarm = bool
 
     local runServiceConnection
