@@ -1,5 +1,4 @@
 -- AdvanceFalling Team
--- Some are scripts were modify to be toggleable :3
 
 -- ALSO im sorry if this arsenal script have messy codes in it, I will try to make it organized in the future if im not lazy. 
 
