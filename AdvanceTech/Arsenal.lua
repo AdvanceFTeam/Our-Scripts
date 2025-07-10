@@ -60,6 +60,7 @@ local Window     = Library.CreateLib("AdvanceTech | Arsenal | v1.9", "BlueTheme"
 local Welcome     = Window:NewTab("Main")
 local MainSection = Welcome:NewSection("Welcome To AdvanceTech | " .. game.Players.LocalPlayer.Name)
 local HitboxSection = Welcome:NewSection("> Hitbox Settings <")
+--[[
 local SilentTab   = Welcome:NewSection("> Silent Aim <")
 
 
@@ -111,7 +112,7 @@ end)
 SilentTab:NewSlider("FOV Circle Size", "Adjust FOV circle size", 1000, 1, function(value)
     silentAim.Fov = value
 end)
-
+]]--
 
 local triggerbot = Welcome:NewSection("> Triggerbot <")
 
