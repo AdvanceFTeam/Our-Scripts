@@ -2,6 +2,7 @@
 <img width="1088" height="580" alt="image" src="https://github.com/user-attachments/assets/dc3b11fd-1c85-4793-9964-9497c672266f" />
 
 - Note i had no idea what to name this ui library so ima just call it `Spectrum`
+- and also this is still in w.i.p
 
 ## Loadstring
 ```lua
