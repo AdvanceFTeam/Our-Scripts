@@ -9,7 +9,6 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Advan
 
 ## Creating Windows
 ```lua
--- Create multiple windows that automatically position themselves
 local window1 = Library:Window("Main Window")
 local window2 = Library:Window("Settings")
 local window3 = Library:Window("Tools")
