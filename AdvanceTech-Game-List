@@ -1,0 +1,4 @@
+-- Other game will be added later :)
+getgenv().Games = {
+  [111958650] = "https://raw.githubusercontent.com/AdvanceFTeam/Our-Scripts/refs/heads/main/AdvanceTech/Arsenal.lua",
+}
