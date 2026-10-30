@@ -12,9 +12,9 @@
 -- AdvanceFalling Team
 -- New update soon, RHT Dev love watching and seeing our src :3
 
--- V1.3 of RHT
+-- V1.4 of RHT
 -- everything has been cleanup and a few code has been strip in this open src script :p
--- also this is V1.3 NOT!! V1.4 (v1.4 has more new features than this) so everything is the same
+-- also this is V1.4 NOT!! V1.5 (v1.5 has more new features than this) so everything is the same
 
 
 local Players = game:GetService("Players")
