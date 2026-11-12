@@ -2,6 +2,7 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Workspace = game:GetService("Workspace")
+
 local lp = Players.LocalPlayer
 local cam = Workspace.CurrentCamera
 
@@ -1070,9 +1071,13 @@ settings:button("Reset Theme", function()
 end, "palette")
 
 if type(Library.SetAutoSave) == "function" and type(Library.GetAutoSave) == "function" then
-    settings:toggle("Auto Save Config", Library:GetAutoSave(), function(state)
+    settings:toggle("Auto Save Config", true, function(state)
         Library:SetAutoSave(state)
     end, { icon = "save" })
+    
+    if Library:GetAutoSave() ~= true then
+        Library:SetAutoSave(true)
+    end
 end
 
 Library:Notify("RandomAssistV1.2", "Loaded successfully.", 3, "good")
