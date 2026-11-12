@@ -95,7 +95,7 @@ local choutline = {
 }
 
 local aim_target = nil
-local aim_target_time = 0
+local targettime = 0
 local fovradius = 0
 
 local function getcolor(plr)
@@ -376,7 +376,7 @@ local function canhit(plr)
     return true
 end
 
-local function checkwall(targetpart, char)
+local function wallchecks(targetpart, char)
     if not config.wallcheck then return true end
     local params = RaycastParams.new()
     params.FilterDescendantsInstances = {lp.Character}
@@ -437,7 +437,7 @@ local function gettarget()
 
         if config.fov and screendist > fovradius then continue end
 
-        if not checkwall(part, char) then continue end
+        if not wallchecks(part, char) then continue end
 
         if screendist < bestdist then
             bestdist = screendist
@@ -782,11 +782,11 @@ RunService.RenderStepped:Connect(function()
             shoot(part, char)
             if config.stickyaim then
                 aim_target = char
-                aim_target_time = tick()
+                targettime = tick()
             end
         end
     elseif config.stickyaim and aim_target then
-        if tick() - aim_target_time < config.stickytime then
+        if tick() - targettime < config.stickytime then
             local hum = aim_target:FindFirstChild("Humanoid")
             if hum and hum.Health > 0 then
                 local part = aim_target:FindFirstChild(config.part) or aim_target:FindFirstChild("Head")
