@@ -816,7 +816,7 @@ if not Library then
     error("[RandomAssistV1.2] Library failed to load", 0)
 end
 
-local main = Library:Window("RandomAssistV1.2", { icon = "combat" })
+local main = Library:Window("RandomAssist V1.2", { icon = "combat" })
 local visual = Library:Window("Visuals", { icon = "eye" })
 local player_win = Library:Window("Player", { icon = "user" })
 local settings = Library:Window("Settings", { icon = "gear" })
