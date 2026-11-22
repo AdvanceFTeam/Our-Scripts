@@ -1070,7 +1070,7 @@ settings:button("Reset Theme", function()
 end, "palette")
 
 if type(Library.SetAutoSave) == "function" and type(Library.GetAutoSave) == "function" then
-    settings:toggle("Auto Save Config", true, function(state)
+    settings:toggle("Auto Save Config", false, function(state)
         Library:SetAutoSave(state)
     end, { icon = "save" })
     
@@ -1078,5 +1078,89 @@ if type(Library.SetAutoSave) == "function" and type(Library.GetAutoSave) == "fun
         Library:SetAutoSave(true)
     end
 end
+
+settings:section("UI Customization", "palette", { open = true })
+
+local ui_defaults = Library:GetDesign()
+
+local accent_picker = settings:colorpicker("Accent Color", ui_defaults.accent, function(color)
+    Library:Design({ accent = color })
+end, "palette", {
+    presets = {
+        Color3.fromRGB(230, 162, 58),
+        Color3.fromRGB(197, 84, 54),
+        "#69A9FF",
+        "#74C47A",
+    },
+    recent = true,
+    tooltip = "Accent color for the whole UI.",
+})
+
+settings:button("Reset UI theme", function()
+    Library:Design(ui_defaults)
+    if accent_picker then accent_picker:Set(ui_defaults.accent, true) end
+    Library:Notify("RandomAssistV1.2", "Theme reset to defaults.", 2, "info")
+end, "refresh", { tooltip = "Restores default colors" })
+
+settings:section("Menu Keybind", "key", { open = true })
+
+local default_menu_key = "RightControl+LeftShift"
+local menu_bind
+menu_bind = settings:keybind("Open/Close UI", Library:GetToggleKey() or default_menu_key, nil, "key", {
+    combo = true,
+    allowMouse = false,
+    resetKey = default_menu_key,
+    tooltip = "Click, then hold the key combo.",
+    onChange = function(key)
+        if not key or key == "" then
+            Library:SetToggleKey(default_menu_key)
+            if menu_bind then menu_bind:Set(default_menu_key) end
+            return
+        end
+        if key ~= Library:GetToggleKey() then
+            Library:SetToggleKey(key)
+            Library:Notify("RandomAssistV1.2", "Menu key set to: " .. key, 2, "info")
+        end
+    end,
+})
+
+settings:button("Reset menu key to default", function()
+    Library:SetToggleKey(default_menu_key)
+    if menu_bind then menu_bind:Set(default_menu_key) end
+    Library:Notify("RandomAssistV1.2", "Menu key reset.", 2, "info")
+end, "refresh", { variant = "secondary" })
+
+settings:section("Mobile", "menu")
+
+if Library:IsMobile() then
+    settings:label("Touch device detected - launcher button recommended.")
+else
+    settings:label("Toggle the floating launcher to test on desktop.")
+end
+
+local mobile_toggle
+mobile_toggle = settings:toggle("Mobile Button", Library:GetMobileButton() and true or false, function(state)
+    local mounted = Library:SetMobileButton(state)
+    if mobile_toggle then mobile_toggle:Set(mounted and true or false) end
+end, { icon = "menu", tooltip = "Floating button that opens/closes the UI." })
+
+settings:section("Watermark", "info")
+
+local watermark_toggle
+local watermark_box
+watermark_toggle = settings:toggle("Show Watermark", true, function(state)
+    if state then
+        local text = watermark_box and watermark_box:Get() or "RandomAssist V1.2"
+        Library:SetWatermark(text ~= "" and text or "RandomAssist V1.2")
+    else
+        Library:SetWatermarkVisible(false)
+    end
+end, { icon = "info", tooltip = "Card in the top-left corner." })
+
+watermark_box = settings:textbox("Watermark text", "RandomAssist V1.2", function(text)
+    if watermark_toggle and watermark_toggle:Get() then
+        Library:SetWatermark(text ~= "" and text or "RandomAssist V1.2")
+    end
+end, "code", { placeholder = "RandomAssist V1.2" })
 
 Library:Notify("RandomAssistV1.2", "Loaded successfully.", 3, "good")
