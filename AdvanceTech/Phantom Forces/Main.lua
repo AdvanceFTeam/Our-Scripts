@@ -62,34 +62,34 @@ local Config = {
 	tracer = true,
 	tracerFrom = "Bottom",
 	color = Color3.fromRGB(255, 255, 255),
-	boxThickness = 1,
-	textSize = 13,
-	espRange = 400,
+	BoxThickness = 1,
+	textsize = 13,
+	EspRange = 400,
 	targetMode = "Team Base",
 	aim = false,
-	aimMode = "Hold",
-	aimMethod = "Mouse",
+	aimmode = "Hold",
+	aimmethod = "Mouse",
 	fov = 360,
 	fovCircle = false,
 	smooth = 9,
 	wallCheck = false,
 	sticky = true,
-	maxDistance = 600,
-	aimPart = "Head",
+	max_distance = 600,
+	aimpart = "Head",
 	watermark = true,
 	cham = false,
-	chamMode = "Both",
+	ChamMode = "Both",
 	chamFill = 0.55,
-	chamColor = Color3.fromRGB(255, 255, 255),
+	ChamColor = Color3.fromRGB(255, 255, 255),
 	skeleton = false,
-	skeletonThickness = 1,
+	SkeletonThickness = 1,
 	crosshair = false,
-	crossStyle = "Cross",
+	CrossStyle = "Cross",
 	crossSize = 9,
-	crossGap = 4,
-	crossThickness = 1,
+	CrossGap = 4,
+	CrossThickness = 1,
 	crossColor = Color3.fromRGB(255, 255, 255),
-	hideCrosshair = true,
+	hide_crosshair = true,
 	sprint = false,
 	walk = false,
 	walkSpeed = 14,
@@ -393,7 +393,7 @@ local function DFrame(frame, model, meters, player_name, health)
 			line.From = corners[i]
 			line.To = corners[i % 4 + 1]
 			line.Color = Config.color
-			line.Thickness = Config.boxThickness
+			line.Thickness = Config.BoxThickness
 			line.Visible = true
 		end
 	else
@@ -405,21 +405,21 @@ local function DFrame(frame, model, meters, player_name, health)
 	local anchor_y = Config.box and below or cy
 
 	frame.name.Text = player_name
-	frame.name.Size = Config.textSize
+	frame.name.Size = Config.textsize
 	frame.name.Position = Vector2.new(cx, anchor_y)
 	frame.name.Color = Config.color
 	frame.name.Visible = Config.name
 
 	frame.distance.Text = string.format("%dm", meters)
-	frame.distance.Size = math.max(9, Config.textSize - 1)
-	frame.distance.Position = Vector2.new(cx, Config.name and anchor_y + Config.textSize + 1 or anchor_y)
+	frame.distance.Size = math.max(9, Config.textsize - 1)
+	frame.distance.Position = Vector2.new(cx, Config.name and anchor_y + Config.textsize + 1 or anchor_y)
 	frame.distance.Color = Config.color
 	frame.distance.Visible = Config.distance
 
 	frame.tracer.From = TracerOrigin(camera.ViewportSize)
 	frame.tracer.To = Vector2.new(cx, cy)
 	frame.tracer.Color = Config.color
-	frame.tracer.Thickness = Config.boxThickness
+	frame.tracer.Thickness = Config.BoxThickness
 	frame.tracer.Visible = Config.tracer
 
 		local show_bar = Config.health and health ~= nil
@@ -471,12 +471,12 @@ local function e_cham(model)
 end
 
 local function s_cham(highlight)
-	highlight.FillColor = Config.chamColor
-	highlight.OutlineColor = Config.chamColor
-	if Config.chamMode == "Fill" then
+	highlight.FillColor = Config.ChamColor
+	highlight.OutlineColor = Config.ChamColor
+	if Config.ChamMode == "Fill" then
 		highlight.FillTransparency = Config.chamFill
 		highlight.OutlineTransparency = 1
-	elseif Config.chamMode == "Outline" then
+	elseif Config.ChamMode == "Outline" then
 		highlight.FillTransparency = 1
 		highlight.OutlineTransparency = 0
 	else
@@ -581,8 +581,8 @@ local function DrawSkeleton(lines, entry, camera)
 		if ok_from and ok_to and screen_from.Z > 0 and screen_to.Z > 0 then
 			line.From = Vector2.new(screen_from.X, screen_from.Y)
 			line.To = Vector2.new(screen_to.X, screen_to.Y)
-			line.Color = Config.chamColor
-			line.Thickness = Config.skeletonThickness
+			line.Color = Config.ChamColor
+			line.Thickness = Config.SkeletonThickness
 			line.Visible = true
 			any = true
 		else
@@ -634,9 +634,9 @@ local function should_aim()
 	if not Config.aim then
 		return false
 	end
-	if Config.aimMode == "Always" then
+	if Config.aimmode == "Always" then
 		return true
-	elseif Config.aimMode == "Toggle" then
+	elseif Config.aimmode == "Toggle" then
 		return toggle_aim
 	end
 	return key_down
@@ -646,7 +646,7 @@ local current = nil
 
 local function aimtarget(entry, camera)
 	local head = entry.head.Position
-	if Config.aimPart == "Head" then
+	if Config.aimpart == "Head" then
 		return head
 	end
 
@@ -654,11 +654,11 @@ local function aimtarget(entry, camera)
 	local size = entry.model:GetExtentsSize()
 	local chest = box.Position + Vector3.new(0, size.Y * 0.12, 0)
 
-	if Config.aimPart == "Chest" then
+	if Config.aimpart == "Chest" then
 		return chest
-	elseif Config.aimPart == "Center" then
+	elseif Config.aimpart == "Center" then
 		return box.Position
-	elseif Config.aimPart == "Legs" then
+	elseif Config.aimpart == "Legs" then
 		return box.Position - Vector3.new(0, size.Y * 0.3, 0)
 	end
 
@@ -682,7 +682,7 @@ local function b_target(camera, center)
 	local scores = {}
 	for _, entry in ipairs(targets()) do
 		local range = (entry.head.Position - camera.CFrame.Position).Magnitude * 0.28
-		if range <= Config.maxDistance then
+		if range <= Config.max_distance then
 			local point = aimtarget(entry, camera)
 			if visible(point) then
 				local p, on_screen = camera:WorldToViewportPoint(point)
@@ -713,7 +713,7 @@ local function update_a(dt)
 		return
 	end
 
-	if Config.aim and Config.aimMode == "Hold" then
+	if Config.aim and Config.aimmode == "Hold" then
 		key_down = held_down()
 	end
 
@@ -729,7 +729,7 @@ local function update_a(dt)
 	Stats.target = target.name
 	local point = aimtarget(target, camera)
 
-	if Config.aimMethod == "Mouse" and type(mousemoverel) == "function" then
+	if Config.aimmethod == "Mouse" and type(mousemoverel) == "function" then
 		local p, on_screen = camera:WorldToViewportPoint(point)
 		if on_screen and p.Z > 0 then
 			mousemoverel((p.X - center.X) / Config.smooth, (p.Y - center.Y) / Config.smooth)
@@ -801,7 +801,7 @@ local function d_sprint()
 		r_sprint()
 		return
 	end
-	local aiming = should_aim() and (Config.aimMode ~= "Always" or current ~= nil)
+	local aiming = should_aim() and (Config.aimmode ~= "Always" or current ~= nil)
 	if aiming then
 		r_sprint()
 		return
@@ -864,7 +864,7 @@ local function d_sprint()
 	end
 end
 
-local ija = 0 -- inf jumpat
+local ija = 0 -- inf jump at
 local function d_InfJump()
 	local humanoid = myhumanoid()
 	local root = myroot()
@@ -975,21 +975,21 @@ end, "palette", {
 	tooltip = "Box, name, tracer and FOV circle share it.",
 })
 
-esp_tab:slider("thickness", 1, 4, Config.boxThickness, function(value)
+esp_tab:slider("thickness", 1, 4, Config.BoxThickness, function(value)
 	if a_input() then
-		Config.boxThickness = value
+		Config.BoxThickness = value
 	end
 end, 1, "sliders", { tooltip = "Box and tracer line width." })
 
-esp_tab:slider("text size", 9, 20, Config.textSize, function(value)
+esp_tab:slider("text size", 9, 20, Config.textsize, function(value)
 	if a_input() then
-		Config.textSize = value
+		Config.textsize = value
 	end
 end, 1, "code")
 
-esp_tab:slider("esp range", 50, 1000, Config.espRange, function(value)
+esp_tab:slider("esp range", 50, 1000, Config.EspRange, function(value)
 	if a_input() then
-		Config.espRange = value
+		Config.EspRange = value
 	end
 end, 25, "arrow", { suffix = " m" })
 
@@ -1009,9 +1009,9 @@ local cham_toggle = esp_tab:toggle("cham", Config.cham, function(state)
 	end
 end, { icon = "palette", tooltip = "Coloured overlay on the rig, visible through walls." })
 
-esp_tab:dropdown("cham mode", { "Both", "Fill", "Outline" }, Config.chamMode, function(picked)
+esp_tab:dropdown("cham mode", { "Both", "Fill", "Outline" }, Config.ChamMode, function(picked)
 	if a_input() then
-		Config.chamMode = picked
+		Config.ChamMode = picked
 	end
 end, false, "palette")
 
@@ -1021,9 +1021,9 @@ esp_tab:slider("cham fill", 10, 90, math.floor(Config.chamFill * 100), function(
 	end
 end, 5, "sliders", { suffix = "%", tooltip = "Lower is more solid." })
 
-local cham_color = esp_tab:colorpicker("cham color", Config.chamColor, function(color)
+local cham_color = esp_tab:colorpicker("cham color", Config.ChamColor, function(color)
 	if a_input() then
-		Config.chamColor = color
+		Config.ChamColor = color
 	end
 end, "palette", {
 	presets = {
@@ -1044,9 +1044,9 @@ local skeleton_toggle = esp_tab:toggle("skeleton", Config.skeleton, function(sta
 	end
 end, { icon = "user", tooltip = "Stick figure from the rig's own parts." })
 
-esp_tab:slider("bone thickness", 1, 4, Config.skeletonThickness, function(value)
+esp_tab:slider("bone thickness", 1, 4, Config.SkeletonThickness, function(value)
 	if a_input() then
-		Config.skeletonThickness = value
+		Config.SkeletonThickness = value
 	end
 end, 1, "sliders")
 
@@ -1062,9 +1062,9 @@ local cross_toggle = cross_tab:toggle("crosshair", Config.crosshair, function(st
 	end
 end, { icon = "target" })
 
-cross_tab:dropdown("style", { "Cross", "T", "Circle", "Dot" }, Config.crossStyle, function(picked)
+cross_tab:dropdown("style", { "Cross", "T", "Circle", "Dot" }, Config.CrossStyle, function(picked)
 	if a_input() then
-		Config.crossStyle = picked
+		Config.CrossStyle = picked
 	end
 end, false, "palette")
 
@@ -1074,15 +1074,15 @@ cross_tab:slider("size", 2, 30, Config.crossSize, function(value)
 	end
 end, 1, "sliders", { suffix = " px" })
 
-cross_tab:slider("gap", 0, 20, Config.crossGap, function(value)
+cross_tab:slider("gap", 0, 20, Config.CrossGap, function(value)
 	if a_input() then
-		Config.crossGap = value
+		Config.CrossGap = value
 	end
 end, 1, "sliders", { suffix = " px" })
 
-cross_tab:slider("thickness", 1, 4, Config.crossThickness, function(value)
+cross_tab:slider("thickness", 1, 4, Config.CrossThickness, function(value)
 	if a_input() then
-		Config.crossThickness = value
+		Config.CrossThickness = value
 	end
 end, 1, "sliders")
 
@@ -1100,9 +1100,9 @@ end, "palette", {
 	recent = true,
 })
 
-local hide_cross_toggle = cross_tab:toggle("hide game crosshair", Config.hideCrosshair, function(state)
+local hide_cross_toggle = cross_tab:toggle("hide game crosshair", Config.hide_crosshair, function(state)
 	if a_input() then
-		Config.hideCrosshair = state
+		Config.hide_crosshair = state
 	end
 end, { icon = "eye", tooltip = "Hides PF own crosshair." })
 
@@ -1119,21 +1119,21 @@ local aim_toggle = combat:toggle("aimbot", Config.aim, function(state)
 	end
 end, { icon = "target" })
 
-combat:dropdown("aim part", { "Head", "Chest", "Center", "Legs", "Nearest" }, Config.aimPart, function(picked)
+combat:dropdown("aim part", { "Head", "Chest", "Center", "Legs", "Nearest" }, Config.aimpart, function(picked)
 	if a_input() then
-		Config.aimPart = picked
+		Config.aimpart = picked
 	end
 end, false, "target", { tooltip = "Where on the body the aimbot locks in" })
 
-combat:dropdown("mode", { "Hold", "Toggle", "Always" }, Config.aimMode, function(picked)
+combat:dropdown("mode", { "Hold", "Toggle", "Always" }, Config.aimmode, function(picked)
 	if a_input() then
-		Config.aimMode = picked
+		Config.aimmode = picked
 	end
 end, false, "key")
 
-combat:dropdown("method", { "Mouse", "Camera" }, Config.aimMethod, function(picked)
+combat:dropdown("method", { "Mouse", "Camera" }, Config.aimmethod, function(picked)
 	if a_input() then
-		Config.aimMethod = picked
+		Config.aimmethod = picked
 	end
 end, false, "sliders", { tooltip = "mouse tracks best. Camera only nudges." })
 
@@ -1167,9 +1167,9 @@ combat:toggle("sticky target", Config.sticky, function(state)
 	end
 end, { icon = "target", tooltip = "Stay on one player instead of switching." })
 
-combat:slider("max range", 50, 1000, Config.maxDistance, function(value)
+combat:slider("max range", 50, 1000, Config.max_distance, function(value)
 	if a_input() then
-		Config.maxDistance = value
+		Config.max_distance = value
 	end
 end, 25, "arrow", { suffix = " m" })
 
@@ -1337,13 +1337,13 @@ Config.sprint = false
 Config.cham = false
 Config.skeleton = false
 Config.crosshair = false
-Config.hideCrosshair = true
+Config.hide_crosshair = true
 Config.health = true
 Config.infJump = false
 
 local white = Color3.fromRGB(255, 255, 255)
 Config.color = white
-Config.chamColor = white
+Config.ChamColor = white
 Config.crossColor = white
 pcall(function()
 	esp_color:Set(white)
@@ -1419,7 +1419,7 @@ local function u_crosshair(camera)
 	C_Circle.Visible = false
 	dots.Visible = false
 
-	local hide = Config.crosshair and Config.hideCrosshair
+	local hide = Config.crosshair and Config.hide_crosshair
 	if hide ~= cross_hidden then
 		for _, frame in ipairs(game_crosshairs()) do
 			frame.Visible = not hide
@@ -1431,8 +1431,8 @@ local function u_crosshair(camera)
 		return
 	end
 
-	local style = Config.crossStyle
-	local size, gap = Config.crossSize, Config.crossGap
+	local style = Config.CrossStyle
+	local size, gap = Config.crossSize, Config.CrossGap
 	local color = Config.crossColor
 
 	local function arm(key, from, to)
@@ -1440,19 +1440,19 @@ local function u_crosshair(camera)
 		line.From = from
 		line.To = to
 		line.Color = color
-		line.Thickness = Config.crossThickness
+		line.Thickness = Config.CrossThickness
 		line.Visible = true
 	end
 
 	if style == "Circle" then
 		C_Circle.Position = center
 		C_Circle.Radius = size
-		C_Circle.Thickness = Config.crossThickness
+		C_Circle.Thickness = Config.CrossThickness
 		C_Circle.Color = color
 		C_Circle.Visible = true
 	elseif style == "Dot" then
 		dots.Position = center
-		dots.Radius = math.max(1, Config.crossThickness)
+		dots.Radius = math.max(1, Config.CrossThickness)
 		dots.Color = color
 		dots.Visible = true
 	else
@@ -1504,7 +1504,7 @@ local function refresh_aim()
 			break
 		end
 	end
-	if held and not key_down and Config.aimMode == "Toggle" then
+	if held and not key_down and Config.aimmode == "Toggle" then
 		toggle_aim = not toggle_aim
 	end
 	key_down = held
@@ -1564,7 +1564,7 @@ render = RunService.RenderStepped:Connect(function()
 	if Config.esp or Config.cham or Config.skeleton then
 		for _, entry in ipairs(shown) do
 			local meters = math.floor((entry.head.Position - camera.CFrame.Position).Magnitude * 0.28)
-			if meters <= Config.espRange then
+			if meters <= Config.EspRange then
 				local model = entry.model
 				if Config.esp then
 					seen[model] = true
