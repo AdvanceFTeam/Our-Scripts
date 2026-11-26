@@ -1,13 +1,10 @@
 --[[
-
-
  █████╗ ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗███████╗███████╗ █████╗ ██╗     ██╗     ██╗███╗   ██╗ ██████╗     ████████╗███████╗ █████╗ ███╗   ███╗
 ██╔══██╗██╔══██╗██║   ██║██╔══██╗████╗  ██║██╔════╝██╔════╝██╔════╝██╔══██╗██║     ██║     ██║████╗  ██║██╔════╝     ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║
 ███████║██║  ██║██║   ██║███████║██╔██╗ ██║██║     █████╗  █████╗  ███████║██║     ██║     ██║██╔██╗ ██║██║  ███╗       ██║   █████╗  ███████║██╔████╔██║
 ██╔══██║██║  ██║╚██╗ ██╔╝██╔══██║██║╚██╗██║██║     ██╔══╝  ██╔══╝  ██╔══██║██║     ██║     ██║██║╚██╗██║██║   ██║       ██║   ██╔══╝  ██╔══██║██║╚██╔╝██║
 ██║  ██║██████╔╝ ╚████╔╝ ██║  ██║██║ ╚████║╚██████╗███████╗██║     ██║  ██║███████╗███████╗██║██║ ╚████║╚██████╔╝       ██║   ███████╗██║  ██║██║ ╚═╝ ██║
 ╚═╝  ╚═╝╚═════╝   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝        ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
-
 ]] --
 -- AdvanceFalling Team
 
@@ -914,10 +911,8 @@ do
 	end
 end
 
-local built_at = os.clock()
-
 local function a_input()
-	return os.clock() - built_at > 2.5
+	return true
 end
 
 local window = library:Window("phantom forces", { icon = "target", width = 330 })
@@ -1014,54 +1009,54 @@ end, false, "shield", {
 	tooltip = "Team Base: other faction only. FFA: both sides. Everyone: every rig.",
 })
 
-esp_tab:section("Cham", "palette", { open = true })
+-- esp_tab:section("Cham", "palette", { open = true })
+--
+-- local cham_toggle = esp_tab:toggle("cham", Config.cham, function(state)
+-- 	if a_input() then
+-- 		Config.cham = state
+-- 	end
+-- end, { icon = "palette", tooltip = "Coloured overlay on the rig, visible through walls." })
+--
+-- esp_tab:dropdown("cham mode", { "Both", "Fill", "Outline" }, Config.ChamMode, function(picked)
+-- 	if a_input() then
+-- 		Config.ChamMode = picked
+-- 	end
+-- end, false, "palette")
+--
+-- esp_tab:slider("cham fill", 10, 90, math.floor(Config.chamFill * 100), function(value)
+-- 	if a_input() then
+-- 		Config.chamFill = value / 100
+-- 	end
+-- end, 5, "sliders", { suffix = "%", tooltip = "Lower is more solid." })
+--
+-- local cham_color = esp_tab:colorpicker("cham color", Config.ChamColor, function(color)
+-- 	if a_input() then
+-- 		Config.ChamColor = color
+-- 	end
+-- end, "palette", {
+-- 	presets = {
+-- 		Color3.fromRGB(255, 255, 255),
+-- 		Color3.fromRGB(255, 120, 120),
+-- 		Color3.fromRGB(90, 220, 255),
+-- 		Color3.fromRGB(255, 70, 70),
+-- 	},
+-- 	recent = true,
+-- 	tooltip = "Cham fill, outline and skeleton all use it.",
+-- })
 
-local cham_toggle = esp_tab:toggle("cham", Config.cham, function(state)
-	if a_input() then
-		Config.cham = state
-	end
-end, { icon = "palette", tooltip = "Coloured overlay on the rig, visible through walls." })
-
-esp_tab:dropdown("cham mode", { "Both", "Fill", "Outline" }, Config.ChamMode, function(picked)
-	if a_input() then
-		Config.ChamMode = picked
-	end
-end, false, "palette")
-
-esp_tab:slider("cham fill", 10, 90, math.floor(Config.chamFill * 100), function(value)
-	if a_input() then
-		Config.chamFill = value / 100
-	end
-end, 5, "sliders", { suffix = "%", tooltip = "Lower is more solid." })
-
-local cham_color = esp_tab:colorpicker("cham color", Config.ChamColor, function(color)
-	if a_input() then
-		Config.ChamColor = color
-	end
-end, "palette", {
-	presets = {
-		Color3.fromRGB(255, 255, 255),
-		Color3.fromRGB(255, 120, 120),
-		Color3.fromRGB(90, 220, 255),
-		Color3.fromRGB(255, 70, 70),
-	},
-	recent = true,
-	tooltip = "Cham fill, outline and skeleton all use it.",
-})
-
-esp_tab:section("Skeleton", "user", { open = true })
-
-local skeleton_toggle = esp_tab:toggle("skeleton", Config.skeleton, function(state)
-	if a_input() then
-		Config.skeleton = state
-	end
-end, { icon = "user", tooltip = "Stick figure from the rig's own parts." })
-
-esp_tab:slider("bone thickness", 1, 4, Config.SkeletonThickness, function(value)
-	if a_input() then
-		Config.SkeletonThickness = value
-	end
-end, 1, "sliders")
+-- esp_tab:section("Skeleton", "user", { open = true })
+--
+-- local skeleton_toggle = esp_tab:toggle("skeleton", Config.skeleton, function(state)
+-- 	if a_input() then
+-- 		Config.skeleton = state
+-- 	end
+-- end, { icon = "user", tooltip = "Stick figure from the rig's own parts." })
+--
+-- esp_tab:slider("bone thickness", 1, 4, Config.SkeletonThickness, function(value)
+-- 	if a_input() then
+-- 		Config.SkeletonThickness = value
+-- 	end
+-- end, 1, "sliders")
 
 local cross_tab = visual:Tab("Crosshair", { icon = "target", open = { "Crosshair" } })
 
@@ -1186,12 +1181,6 @@ combat:slider("max range", 50, 1000, Config.max_distance, function(value)
 	end
 end, 25, "arrow", { suffix = " m" })
 
-combat:toggle("watermark", Config.watermark, function(state)
-	if a_input() then
-		Config.watermark = state
-	end
-end, { icon = "info", tooltip = "Live rig count, team and current target." })
-
 combat:keybind("aim key", "MouseButton2", nil, "key", {
 	mode = "hold",
 	allowMouse = true,
@@ -1304,6 +1293,11 @@ menu_bind = settings:keybind("open / close ui", library:GetToggleKey(), nil, "ke
 })
 
 settings:section("Appearance", "palette", { open = true })
+settings:toggle("watermark", Config.watermark, function(state)
+	if a_input() then
+		Config.watermark = state
+	end
+end, { icon = "info", tooltip = "Live rig count, team and current target." })
 
 local accent = settings:colorpicker("accent", defaults.accent, function(color)
 	library:Design({ accent = color })
@@ -1329,40 +1323,6 @@ settings:button("unload", function()
 	shared.pf.unload_requested = true
 end, "trash", { variant = "danger", confirm = "Click again to unload" })
 
-esp_toggle:Set(true, true)
-aim_toggle:Set(false, true)
-walk_toggle:Set(false, true)
-jump_toggle:Set(false, true)
-circle_toggle:Set(false, true)
-sprint_toggle:Set(false, true)
-cham_toggle:Set(false, true)
-skeleton_toggle:Set(false, true)
-cross_toggle:Set(false, true)
-hide_cross_toggle:Set(true, true)
-health_toggle:Set(true, true)
-inf_jump_toggle:Set(false, true)
-Config.esp = true
-Config.aim = false
-Config.walk = false
-Config.jump = false
-Config.fovCircle = false
-Config.sprint = false
-Config.cham = false
-Config.skeleton = false
-Config.crosshair = false
-Config.hide_crosshair = true
-Config.health = true
-Config.infJump = false
-
-local white = Color3.fromRGB(255, 255, 255)
-Config.color = white
-Config.ChamColor = white
-Config.crossColor = white
-pcall(function()
-	esp_color:Set(white)
-	cham_color:Set(white)
-	cross_color:Set(white)
-end)
 toggle_aim = false
 
 local info = Drawing.new("Text")
