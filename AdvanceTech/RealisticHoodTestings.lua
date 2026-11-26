@@ -1095,7 +1095,7 @@ HitboxTab:toggle("Enable Hitbox", false, function(value)
 	else
 		_hitbox()
 	end
-end, { icon = "check", tooltip = "Extends the hitbox parts of every target." })
+end, { icon = "check", feature = true, tooltip = "Extends the hitbox parts of every target." })
 HitboxTab:slider("Hitbox Size", 1, 50, hitbox_size, function(value)
 	hitbox_size = value
 	if hitbox_on then _hitbox() end
@@ -1123,14 +1123,14 @@ local AimbotTab = MainWindow:Tab("Aimbot", {
 AimbotTab:section("Aimbot", "target", { open = true })
 AimbotTab:toggle("enabled", false, function(on)
 	aimbot_on = on
-end, { icon = "bolt", tooltip = "Holds MouseButton2 to lock on." })
+end, { icon = "bolt", feature = true, tooltip = "Holds MouseButton2 to lock on." })
 AimbotTab:toggle("wall check", false, function(on)
 	wallcheck_on = on
 end, { icon = "eye", tooltip = "Ignores targets behind walls." })
 AimbotTab:toggle("triggerbot", false, function(on)
 	trigger_on = on
 	getgenv().triggerb = on
-end, { icon = "bolt", tooltip = "Fires when the crosshair is on a player." })
+end, { icon = "bolt", feature = true, tooltip = "Fires when the crosshair is on a player." })
 AimbotTab:slider("trigger delay", 0.05, 1, trigger_delay, function(val)
 	trigger_delay = val
 end, 0.05, "speed", { decimals = 2, suffix = " s", tooltip = "Seconds between triggerbot shots." })
@@ -1162,18 +1162,18 @@ MovementTab:section("Fly", "bolt", { open = true })
 MovementTab:toggle("Fly", false, function(value)
 	fly_on = value
 	if value then spawn(fly) end
-end, { icon = "bolt", tooltip = "WASD to move, Space/LeftShift up and down." })
+end, { icon = "bolt", feature = true, tooltip = "WASD to move, Space/LeftShift up and down." })
 MovementTab:slider("Fly Speed", 25, 500, fly_speed, function(value) fly_speed = value end, 1, "speed", { showMax = true })
 MovementTab:slider("Fly Smoothness", 0, 1, fly_smooth, function(value) fly_smooth = value end, 0.05, "sliders", { decimals = 2, tooltip = "0 is instant, 1 is floaty." })
 
 MovementTab:section("WalkSpeed", "speed", { open = true })
-MovementTab:toggle("Enable WalkSpeed", false, function(value) ws_on = value end, { icon = "check" })
+MovementTab:toggle("Enable WalkSpeed", false, function(value) ws_on = value end, { icon = "check", feature = true })
 MovementTab:dropdown("Walk Method", walk_methods, walk_method, function(option) walk_method = option end, false, "target", { tooltip = "How the CFrame is moved." })
 MovementTab:slider("WalkSpeed Power", 16, 500, settings.WalkSpeed, function(value) settings.WalkSpeed = value end, 1, "speed", { showMax = true })
 
 MovementTab:section("Jump", "arrow", { open = true })
-MovementTab:toggle("Enable Jump", false, function(value) IJ = value end, { icon = "check", tooltip = "Hold Space to rise." })
-MovementTab:toggle("Infinite Jump", false, function(value) inf_jump_on = value end, { icon = "arrow", tooltip = "Jump again in midair without changing JumpPower." })
+MovementTab:toggle("Enable Jump", false, function(value) IJ = value end, { icon = "check", feature = true, tooltip = "Hold Space to rise." })
+MovementTab:toggle("Infinite Jump", false, function(value) inf_jump_on = value end, { icon = "arrow", feature = true, tooltip = "Jump again in midair without changing JumpPower." })
 MovementTab:slider("Jump Power", 50, 200, settings.JumpPower, function(value) settings.JumpPower = value end, 1, "arrow", { showMax = true })
 
 MovementTab:section("Collision", "lock", { open = true })
@@ -1197,7 +1197,7 @@ MovementTab:toggle("NoClip", false, function(enabled)
 		end
 	end
 	if noclip_on then spawn(toggle) end
-end, { icon = "lock" })
+end, { icon = "lock", feature = true })
 
 local SpinbotTab = PlayerWindow:Tab("Spinbot", {
 	icon = "refresh",
@@ -1206,7 +1206,7 @@ local SpinbotTab = PlayerWindow:Tab("Spinbot", {
 SpinbotTab:section("Spinbot", "refresh", { open = true })
 SpinbotTab:toggle("Enable Spinbot", false, function(state)
 	spin_on = state
-end, { icon = "check" })
+end, { icon = "check", feature = true })
 SpinbotTab:slider("Spin Speed (deg/s)", 10, 360, spin_speed, function(val)
 	spin_speed = val
 end, 1, "speed", { suffix = " deg/s", showMax = true })
@@ -1222,7 +1222,7 @@ EspTab:toggle("Enable ESP", false, function(value)
 	if not value then
 		for _, set in pairs(esp_sets) do hide_set(set) end
 	end
-end, { icon = "check", tooltip = "Draws every visible player." })
+end, { icon = "check", feature = true, tooltip = "Draws every visible player." })
 EspTab:toggle("Boxes", true, function(value) esp_settings.boxes = value end, { icon = "render" })
 EspTab:toggle("Filled boxes", false, function(value) esp_settings.fill = value end, { icon = "palette" })
 EspTab:toggle("Names", true, function(value) esp_settings.names = value end, { icon = "code" })
@@ -1272,7 +1272,7 @@ LightingTab:section("Lighting", "eye", { open = true })
 LightingTab:toggle("Fullbright", false, function(value)
 	lighting_settings.fullbright = value
 	light()
-end, { icon = "check", tooltip = "Bright, shadowless and fog free." })
+end, { icon = "check", feature = true, tooltip = "Bright, shadowless and fog free." })
 
 local CrosshairTab = VisualsWindow:Tab("Crosshair", {
 	icon = "target",
@@ -1282,7 +1282,7 @@ CrosshairTab:section("Crosshair", "render", { open = true })
 CrosshairTab:toggle("Custom Crosshair", false, function(state)
 	ch_on = state
 	draw_ch()
-end, { icon = "eye" })
+end, { icon = "eye", feature = true })
 CrosshairTab:slider("Crosshair Size", 4, 20, ch_size, function(size)
 	ch_size = size
 	draw_ch()
@@ -1389,6 +1389,36 @@ mobile_toggle = ConfigTab:toggle("Mobile menu button", Library:GetMobileButton()
 	local mounted = Library:SetMobileButton(state)
 	if mobile_toggle then mobile_toggle:Set(mounted) end
 end, { icon = "menu", tooltip = "Floating button that opens the UI on touch devices." })
+
+local feature_toggle
+feature_toggle = ConfigTab:toggle("Show feature list", true, function(state)
+	Library:SetFeatureListVisible(state)
+end, {
+	style = "checkbox",
+	icon = "list",
+	feature = false,
+	tooltip = "Lists active settings in the top-right corner."
+})
+
+if type(Library.SetFeatureListRGB) == "function" then
+	ConfigTab:toggle("Colorful feature list", false, function(state)
+		Library:SetFeatureListRGB(state)
+	end, {
+		icon = "palette",
+		feature = false,
+		tooltip = "Animates the feature list with a moving gradient."
+	})
+end
+
+if type(Library.SetFeatureListAll) == "function" then
+	ConfigTab:toggle("Include every setting", false, function(state)
+		Library:SetFeatureListAll(state)
+	end, {
+		icon = "list",
+		feature = false,
+		tooltip = "Lists every active control, marked or not."
+	})
+end
 
 local CreditsTab = SettingsWindow:Tab("Credits", {
 	icon = "info",
