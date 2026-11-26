@@ -11,9 +11,9 @@
 -- AdvanceFalling Team
 -- New update soon, RHT Dev love watching and seeing our src :3
 
--- V1.4 of RHT
+-- V1.45 of RHT
 -- everything has been cleanup and a few code has been strip in this open src script :p
--- also this is V1.4 NOT!! V1.5 (v1.5 has more new features than this) so everything is the same
+-- also this is V1.45 NOT!! V1.5 (v1.5 has more new features than this) so everything is the same
 
 local Players = game:GetService("Players")
 
@@ -1260,9 +1260,9 @@ end, 0.05, "eye", { decimals = 2, tooltip = "0.2 is faint, 1 is solid." })
 EspTab:colorpicker("ESP Color", esp_settings.color, function(color)
 	esp_settings.color = color
 end, "palette", { recent = true, tooltip = "Boxes, names, health bars and tracers." })
-EspTab:button("Clear ESP drawings", function()
-	wipe()
-end, "close", { variant = "secondary", tooltip = "Removes every drawing object." })
+-- EspTab:button("Clear ESP drawings", function()
+-- 	wipe()
+-- end, "close", { variant = "secondary", tooltip = "Removes every drawing object." })
 
 local LightingTab = VisualsWindow:Tab("Lighting", {
 	icon = "eye",
