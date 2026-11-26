@@ -815,17 +815,42 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
-local source = "https://raw.githubusercontent.com/YellowGregs/Spectrum/refs/heads/main/Spectrum.lua"
-local body = game:HttpGet(source, true)
-local chunk = loadstring(body, "Spectrum")
-local ok, loaded = pcall(function() return chunk and chunk() end)
-local Library = (ok and loaded) or nil
-if not Library then
-    local retry_ok, retry = pcall(loadstring, body .. "\nreturn S.library", "Spectrum")
-    if retry_ok and retry then Library = retry() end
+local SOURCE = "https://raw.githubusercontent.com/YellowGregs/Spectrum/refs/heads/main/Spectrum.lua"
+
+local body
+local remote_url = SOURCE .. "?v=" .. tostring(os.time()) .. tostring(math.random(100000, 999999))
+local request_ok, remote_body = pcall(function()
+    return game:HttpGet(remote_url, true)
+end)
+if request_ok and type(remote_body) == "string" and remote_body ~= "" and remote_body ~= "404: Not Found" then
+    body = remote_body
+end
+if not body and type(readfile) == "function" and type(isfile) == "function" and isfile("Spectrum.lua") then
+    local local_ok, local_body = pcall(readfile, "Spectrum.lua")
+    if local_ok and type(local_body) == "string" and local_body ~= "" then
+        body = local_body
+    end
+end
+if not body then
+    error("[RandomAssistV1.2] Could not load Spectrum.lua: " .. tostring(remote_body), 0)
+end
+
+if shared.Spectrum and type(shared.Spectrum.Destroy) == "function" then
+    pcall(shared.Spectrum.Destroy, shared.Spectrum)
+end
+shared.Spectrum = nil
+
+local chunk, problem = loadstring(body, "Spectrum")
+if not chunk then
+    error("[RandomAssistV1.2] Could not compile Spectrum.lua: " .. tostring(problem), 0)
+end
+
+local run_ok, Library = pcall(chunk)
+if not run_ok then
+    error("[RandomAssistV1.2] Spectrum failed to load: " .. tostring(Library), 0)
 end
 Library = Library or shared.Spectrum
-if not Library then
+if type(Library) ~= "table" or type(Library.Window) ~= "function" then
     error("[RandomAssistV1.2] Library failed to load", 0)
 end
 
@@ -1083,7 +1108,7 @@ settings:button("Reset Theme", function()
 end, "palette")
 
 if type(Library.SetAutoSave) == "function" and type(Library.GetAutoSave) == "function" then
-    settings:toggle("Auto Save Config", false, function(state)
+    settings:toggle("Auto Save Config", true, function(state)
         Library:SetAutoSave(state)
     end, { icon = "save" })
     
@@ -1109,11 +1134,73 @@ end, "palette", {
     tooltip = "Accent color for the whole UI.",
 })
 
+local radius_slider = settings:slider("Corner Radius", 0, 8, ui_defaults.radius or 3, function(val)
+    Library:Design({ radius = val })
+end, 1, "sliders", { tooltip = "0 = square corners, max 12." })
+
+local font_pick
+if type(Library.GetFonts) == "function" and type(Library.SetFont) == "function" then
+    local font_choices = {}
+    local font_keys = {}
+    for _, entry in ipairs(Library:GetFonts()) do
+        font_choices[#font_choices + 1] = entry.label
+        font_keys[entry.label] = entry.key
+    end
+    local _, current_font_label = Library:GetFont()
+    font_pick = settings:dropdown("Font", font_choices, current_font_label, function(pick)
+        local key = font_keys[pick]
+        if key then
+            Library:SetFont(key)
+        end
+    end, false, "code", {
+        searchable = true,
+        tooltip = "Changes every label, button, and tooltip font.",
+    })
+end
+
 settings:button("Reset UI theme", function()
     Library:Design(ui_defaults)
     if accent_picker then accent_picker:Set(ui_defaults.accent, true) end
+    if radius_slider then radius_slider:Set(ui_defaults.radius or 3) end
+    if font_pick and type(Library.SetFont) == "function" then
+        Library:SetFont("spectrum")
+        font_pick:Set("Spectrum")
+    end
     Library:Notify("RandomAssistV1.2", "Theme reset to defaults.", 2, "info")
-end, "refresh", { tooltip = "Restores default colors" })
+end, "refresh", { tooltip = "Restores default colors, radius, and font." })
+
+settings:section("Feature List", "list", { open = true })
+
+local feature_list_toggle = settings:toggle("Show feature list", true, function(state)
+    Library:SetFeatureListVisible(state)
+end, { icon = "list", tooltip = "Lists every active control." })
+
+local feature_list_all
+if type(Library.SetFeatureListAll) == "function" then
+    feature_list_all = settings:toggle("List every active component", false, function(state)
+        Library:SetFeatureListAll(state)
+    end, { icon = "list", tooltip = "Includes every compatible active control; off toggles and empty rows stay out." })
+end
+
+local feature_list_rgb
+if type(Library.SetFeatureListRGB) == "function" then
+    feature_list_rgb = settings:toggle("Rainbow feature list", false, function(state)
+        Library:SetFeatureListRGB(state)
+    end, { icon = "palette", tooltip = "Scrolls a rainbow gradient across the feature labels and rail." })
+end
+
+settings:button("Reset feature list", function()
+    Library:SetFeatureListVisible(true)
+    if feature_list_toggle then feature_list_toggle:Set(true) end
+    if feature_list_all then
+        Library:SetFeatureListAll(false)
+        feature_list_all:Set(false)
+    end
+    if feature_list_rgb then
+        Library:SetFeatureListRGB(false)
+        feature_list_rgb:Set(false)
+    end
+end, "refresh", { variant = "secondary" })
 
 settings:section("Menu Keybind", "key", { open = true })
 
@@ -1161,7 +1248,7 @@ settings:section("Watermark", "info")
 
 local watermark_toggle
 local watermark_box
-watermark_toggle = settings:toggle("Show Watermark", true, function(state)
+watermark_toggle = settings:toggle("Show Watermark", false, function(state)
     if state then
         local text = watermark_box and watermark_box:Get() or "RandomAssist V1.2"
         Library:SetWatermark(text ~= "" and text or "RandomAssist V1.2")
