@@ -1480,4 +1480,4 @@ getgenv().RHT_stop = function()
 	end)
 end
 
-Library:Notify("Realistic Hood Testing DEV", "FUCK YOU, im jk i love you MELON hope you can find a way to patch me hehehe :3", 7, "good")
+Library:Notify("RHT DEV", "FUCK YOU, im jk i love you MELON hope you can find a way to patch me hehehe :3", 7, "good")
