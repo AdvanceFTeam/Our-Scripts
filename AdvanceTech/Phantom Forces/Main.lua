@@ -930,37 +930,37 @@ local esp_toggle = esp_tab:toggle("esp", Config.esp, function(state)
 	if a_input() then
 		Config.esp = state
 	end
-end, { icon = "eye" })
+end, { icon = "eye", feature = "ESP" })
 
 esp_tab:toggle("box", Config.box, function(state)
 	if a_input() then
 		Config.box = state
 	end
-end, { icon = "target", tooltip = "Outline around each player." })
+end, { icon = "target", feature = "Box", tooltip = "Outline around each player." })
 
 esp_tab:toggle("name", Config.name, function(state)
 	if a_input() then
 		Config.name = state
 	end
-end, { icon = "user" })
+end, { icon = "user", feature = "Names" })
 
 esp_tab:toggle("distance", Config.distance, function(state)
 	if a_input() then
 		Config.distance = state
 	end
-end, { icon = "arrow", tooltip = "Metres below the name." })
+end, { icon = "arrow", feature = "Distance", tooltip = "Metres below the name." })
 
 local health_toggle = esp_tab:toggle("healthbar", Config.health, function(state)
 	if a_input() then
 		Config.health = state
 	end
-end, { icon = "shield", tooltip = "Bar left of the box, filled from PF's own health bar." })
+end, { icon = "shield", feature = "Health bar", tooltip = "Bar left of the box, filled from PF's own health bar." })
 
 esp_tab:toggle("tracer", Config.tracer, function(state)
 	if a_input() then
 		Config.tracer = state
 	end
-end, { icon = "arrow" })
+end, { icon = "arrow", feature = "Tracers" })
 
 esp_tab:dropdown("tracer from", { "Bottom", "Center", "Mouse" }, Config.tracerFrom, function(picked)
 	if a_input() then
@@ -1068,7 +1068,7 @@ local cross_toggle = cross_tab:toggle("crosshair", Config.crosshair, function(st
 	if a_input() then
 		Config.crosshair = state
 	end
-end, { icon = "target" })
+end, { icon = "target", feature = "Crosshair" })
 
 cross_tab:dropdown("style", { "Cross", "T", "Circle", "Dot" }, Config.CrossStyle, function(picked)
 	if a_input() then
@@ -1112,7 +1112,7 @@ local hide_cross_toggle = cross_tab:toggle("hide game crosshair", Config.hide_cr
 	if a_input() then
 		Config.hide_crosshair = state
 	end
-end, { icon = "eye", tooltip = "Hides PF own crosshair." })
+end, { icon = "eye", feature = "No game crosshair", tooltip = "Hides PF own crosshair." })
 
 combat:label("you should know what this is")
 
@@ -1125,7 +1125,7 @@ local aim_toggle = combat:toggle("aimbot", Config.aim, function(state)
 			toggle_aim = false
 		end
 	end
-end, { icon = "target" })
+end, { icon = "target", feature = "Aimbot" })
 
 combat:dropdown("aim part", { "Head", "Chest", "Center", "Legs", "Nearest" }, Config.aimpart, function(picked)
 	if a_input() then
@@ -1155,7 +1155,7 @@ local circle_toggle = combat:toggle("fov circle", Config.fovCircle, function(sta
 	if a_input() then
 		Config.fovCircle = state
 	end
-end, { icon = "eye" })
+end, { icon = "eye", feature = "FOV circle" })
 
 combat:slider("smooth", 1, 20, Config.smooth, function(value)
 	if a_input() then
@@ -1167,13 +1167,13 @@ combat:toggle("wall check", Config.wallCheck, function(state)
 	if a_input() then
 		Config.wallCheck = state
 	end
-end, { icon = "shield", tooltip = "On: only lockin players you can see" })
+end, { icon = "shield", feature = "Wall check", tooltip = "On: only lockin players you can see" })
 
 combat:toggle("sticky target", Config.sticky, function(state)
 	if a_input() then
 		Config.sticky = state
 	end
-end, { icon = "target", tooltip = "Stay on one player instead of switching." })
+end, { icon = "target", feature = "Sticky target", tooltip = "Stay on one player instead of switching." })
 
 combat:slider("max range", 50, 1000, Config.max_distance, function(value)
 	if a_input() then
@@ -1197,7 +1197,7 @@ local sprint_toggle = misc:toggle("always sprint", Config.sprint, function(state
 	if a_input() then
 		Config.sprint = state
 	end
-end, { icon = "speed", tooltip = "Holds PF's own sprint key, so PF picks the pace" })
+end, { icon = "speed", feature = "Always sprint", tooltip = "Holds PF's own sprint key, so PF picks the pace" })
 
 local walk_toggle = misc:toggle("walkspeed", Config.walk, function(state)
 	if a_input() then
@@ -1206,7 +1206,7 @@ local walk_toggle = misc:toggle("walkspeed", Config.walk, function(state)
 			library:Notify("walkspeed", "turn off always sprint so walkspeed can take over", 4, "info")
 		end
 	end
-end, { icon = "speed" })
+end, { icon = "speed", feature = "Walkspeed" })
 
 misc:slider("speed", 14, 45, Config.walkSpeed, function(value)
 	if not a_input() then
@@ -1225,7 +1225,7 @@ local jump_toggle = misc:toggle("jump power", Config.jump, function(state)
 	if a_input() then
 		Config.jump = state
 	end
-end, { icon = "arrow" })
+end, { icon = "arrow", feature = "Jump power" })
 
 misc:slider("jump", 29, 120, Config.jumpPower, function(value)
 	if not a_input() then
@@ -1244,7 +1244,7 @@ local inf_jump_toggle = misc:toggle("infinite jump", Config.infJump, function(st
 	if a_input() then
 		Config.infJump = state
 	end
-end, { icon = "arrow", tooltip = "GRRRR" })
+end, { icon = "arrow", feature = "Infinite jump", tooltip = "GRRRR" })
 
 local settings = library:Window("settings", { icon = "sliders", width = 320 })
 local defaults = library:GetDesign()
@@ -1254,7 +1254,7 @@ local profile_box = settings:textbox("profile", library:GetProfile(), nil, "fold
 
 local autosave = settings:toggle("autosave", library:GetAutoSave(), function(state)
 	library:SetAutoSave(state)
-end, { icon = "save", tooltip = "Writes the profile as you change rows." })
+end, { icon = "save", feature = false, tooltip = "Writes the profile as you change rows." })
 autosave:Set(library:GetAutoSave(), true)
 
 settings:button("save now", function()
@@ -1297,7 +1297,37 @@ settings:toggle("watermark", Config.watermark, function(state)
 	if a_input() then
 		Config.watermark = state
 	end
-end, { icon = "info", tooltip = "Live rig count, team and current target." })
+end, { icon = "info", feature = false, tooltip = "Live rig count, team and current target." })
+
+local feature_shown = true
+if type(library.GetFeatureList) == "function" then
+	local _, shown = library:GetFeatureList()
+	feature_shown = shown == true
+end
+
+if type(library.SetFeatureListVisible) == "function" then
+	settings:toggle("feature list", feature_shown, function(state)
+		if a_input() then
+			library:SetFeatureListVisible(state)
+		end
+	end, { icon = "list", feature = false, tooltip = "lists what is turned on" })
+end
+
+if type(library.SetFeatureListAll) == "function" then
+	settings:toggle("list every active row", library:GetFeatureListAll(), function(state)
+		if a_input() then
+			library:SetFeatureListAll(state)
+		end
+	end, { icon = "list", feature = false, tooltip = "Also lists sliders, dropdowns and keybinds." })
+end
+
+if type(library.SetFeatureListRGB) == "function" then
+	settings:toggle("rainbow feature list", library:GetFeatureListRGB(), function(state)
+		if a_input() then
+			library:SetFeatureListRGB(state)
+		end
+	end, { icon = "palette", feature = false, tooltip = "rainbow gradient down the list" })
+end
 
 local accent = settings:colorpicker("accent", defaults.accent, function(color)
 	library:Design({ accent = color })
