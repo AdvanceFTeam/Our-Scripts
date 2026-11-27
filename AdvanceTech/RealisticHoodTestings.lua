@@ -368,10 +368,37 @@ end)
 
 local aimbot_on = false
 local aim_fov = 100
-local aim_smooth = 0.2
+local aim_smooth = 0.16
 local aim_part = "Head"
 local aim_threshold = 30
 local wallcheck_on = false
+local aim_parts = {
+	"Head",
+	"UpperTorso",
+	"LowerTorso",
+	"HumanoidRootPart",
+	"LeftUpperArm",
+	"LeftLowerArm",
+	"LeftHand",
+	"RightUpperArm",
+	"RightLowerArm",
+	"RightHand",
+	"LeftUpperLeg",
+	"LeftLowerLeg",
+	"LeftFoot",
+	"RightUpperLeg",
+	"RightLowerLeg",
+	"RightFoot",
+	"Torso",
+	"Left Arm",
+	"Right Arm",
+	"Left Leg",
+	"Right Leg",
+}
+local aim_choices = { "Random" }
+for _, name in ipairs(aim_parts) do
+	aim_choices[#aim_choices + 1] = name
+end
 local fov_circle = Drawing.new("Circle")
 local show_fov = false
 
@@ -404,26 +431,49 @@ local function can_see(part)
 	return true
 end
 
+local function candidate_parts(char)
+	if aim_part ~= "Random" then
+		local part = char:FindFirstChild(aim_part)
+		if part and part:IsA("BasePart") then
+			return { part }
+		end
+		return {}
+	end
+
+	local parts = {}
+	for _, name in ipairs(aim_parts) do
+		local part = char:FindFirstChild(name)
+		if part and part:IsA("BasePart") then
+			parts[#parts + 1] = part
+		end
+	end
+	return parts
+end
+
 local function nearest()
 	local closest = nil
 	local best = math.huge
 	local mouse = UserInputService:GetMouseLocation()
 	local cam = Workspace.CurrentCamera
 	local spos_out = nil
+	local fov_mode = touch or show_fov
+	local max_dist = fov_mode and aim_fov or aim_threshold
+	local origin = fov_mode and (cam.ViewportSize / 2) or mouse
 
 	for _, p in ipairs(Players:GetPlayers()) do
-		if p ~= player and p.Character and p.Character:FindFirstChild(aim_part) then
+		if p ~= player and p.Character then
 			local hum = p.Character:FindFirstChildOfClass("Humanoid")
 			if hum and hum.Health > 0 then
-				local part = p.Character[aim_part]
-				local spos, on = cam:WorldToViewportPoint(part.Position)
-				if on then
-					local dist = (Vector2.new(spos.X, spos.Y) - mouse).Magnitude
-					if dist <= aim_fov and dist < best then
-						if not wallcheck_on or can_see(part) then
-							best = dist
-							closest = p
-							spos_out = Vector2.new(spos.X, spos.Y)
+				for _, part in ipairs(candidate_parts(p.Character)) do
+					local spos, on = cam:WorldToViewportPoint(part.Position)
+					if on and spos.Z > 0 then
+						local dist = (Vector2.new(spos.X, spos.Y) - origin).Magnitude
+						if dist <= max_dist and dist < best then
+							if not wallcheck_on or can_see(part) then
+								best = dist
+								closest = part
+								spos_out = Vector2.new(spos.X, spos.Y)
+							end
 						end
 					end
 				end
@@ -433,7 +483,10 @@ local function nearest()
 	return closest, best, spos_out
 end
 
-RunService.RenderStepped:Connect(function()
+pcall(function()
+	RunService:UnbindFromRenderStep("RHT_Aim")
+end)
+RunService:BindToRenderStep("RHT_Aim", Enum.RenderPriority.Camera.Value + 1, function(dt)
 	if not alive then return end
 	fov_circle.Visible = aimbot_on and show_fov
 	if fov_circle.Visible then
@@ -444,22 +497,20 @@ RunService.RenderStepped:Connect(function()
 
 	local holding = touch or UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
 	if aimbot_on and holding then
-		local target, dist, screen_pos = nearest()
-		if dist and dist <= aim_threshold and screen_pos then
+		local part, dist, screen_pos = nearest()
+		local fov_mode = touch or show_fov
+		local max_dist = fov_mode and aim_fov or aim_threshold
+		if part and dist and dist <= max_dist and screen_pos then
+			local alpha = math.min(1 - math.exp(-dt / math.max(aim_smooth, 0.02)), 0.9)
 			if touch then
-				local part = target and target.Character and target.Character:FindFirstChild(aim_part)
-				if part then
-					local cam = Workspace.CurrentCamera
-					local goal = CFrame.lookAt(cam.CFrame.Position, part.Position)
-					cam.CFrame = cam.CFrame:Lerp(goal, math.clamp(aim_smooth, 0.05, 1))
-				end
+				local cam = Workspace.CurrentCamera
+				local goal = CFrame.lookAt(cam.CFrame.Position, part.Position)
+				cam.CFrame = cam.CFrame:Lerp(goal, alpha)
 			else
 				local mouse = UserInputService:GetMouseLocation()
 				local dir = screen_pos - mouse
-				local mdist = dir.Magnitude
-				if mdist > 0 and type(mousemoverel) == "function" then
-					local move = dir.Unit * (mdist * aim_smooth)
-					mousemoverel(move.X, move.Y)
+				if dir.Magnitude > 0.5 and type(mousemoverel) == "function" then
+					mousemoverel(dir.X * alpha, dir.Y * alpha)
 				end
 			end
 		end
@@ -1134,15 +1185,15 @@ end, { icon = "bolt", feature = true, tooltip = "Fires when the crosshair is on 
 AimbotTab:slider("trigger delay", 0.05, 1, trigger_delay, function(val)
 	trigger_delay = val
 end, 0.05, "speed", { decimals = 2, suffix = " s", tooltip = "Seconds between triggerbot shots." })
-AimbotTab:dropdown("target part", {"Head", "UpperTorso", "LowerTorso", "HumanoidRootPart"}, aim_part, function(part)
+AimbotTab:dropdown("target part", aim_choices, aim_part, function(part)
 	aim_part = part
-end, false, "user", { tooltip = "Body part to aim at." })
+end, false, "user", { tooltip = "Body part to aim at, or Random for the part nearest the mouse." })
 AimbotTab:slider("lock on sensitivity", 5, 100, aim_threshold, function(val)
 	aim_threshold = val
 end, 1, "speed", { showMax = true, tooltip = "Pixels the target may drift before the lock drops." })
-AimbotTab:slider("smoothness", 1, 10, aim_smooth * 10, function(val)
-	aim_smooth = val / 10
-end, 1, "sliders", { tooltip = "1 is snappy, 10 is soft." })
+AimbotTab:slider("smoothness", 1, 20, aim_smooth * 50, function(val)
+	aim_smooth = val / 50
+end, 1, "sliders", { tooltip = "1 is nearly instant, 20 is soft." })
 AimbotTab:toggle("show fov circle", false, function(on)
 	show_fov = on
 end, { icon = "eye", tooltip = "Draws the aim radius on screen." })
@@ -1465,6 +1516,9 @@ getgenv().RHT_stop = function()
 	ws_on = false
 	pcall(function()
 		RunService:UnbindFromRenderStep(FLY_BIND)
+	end)
+	pcall(function()
+		RunService:UnbindFromRenderStep("RHT_Aim")
 	end)
 	pcall(wipe)
 	for plr in pairs(og_props) do
