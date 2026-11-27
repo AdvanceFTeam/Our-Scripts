@@ -316,7 +316,7 @@ end, { icon = "box", feature = true, tooltip = "you will be in crawl mode" })
 
 computer_tab:section("Mechanics", "shield", { open = true })
 
-computer_tab:button("get out of freeze pod", function()
+computer_tab:button("get out of freeze pod", function() -- ty narrator for this (i stole this from him hehe)
 	local humanoid = Humanoid()
 	if not humanoid then
 		library:Notify("escaped", "no character to restart", 3, "bad")
@@ -336,7 +336,7 @@ end, { icon = "target", feature = true, tooltip = "goes to the nearest unfinishe
 
 computer_tab:section("Unfreeze", "refresh", { open = true })
 
-computer_tab:toggle("auto unfreeze player", Config.unfreeze, function(state)
+computer_tab:toggle("auto rescue player", Config.unfreeze, function(state)
 	Config.unfreeze = state
 end, { icon = "refresh", feature = true, tooltip = "your character just goes to the route to the pod" })
 
