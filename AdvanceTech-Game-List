@@ -4,4 +4,5 @@ getgenv().Games = {
   [12673840215] = "https://raw.githubusercontent.com/AdvanceFTeam/Our-Scripts/refs/heads/main/AdvanceTech/RealisticHoodTestings.lua",
   [2377868063] = "https://raw.githubusercontent.com/AdvanceFTeam/Our-Scripts/refs/heads/main/AdvanceTech/StrucidV2.lua",
   [292439477] = "https://raw.githubusercontent.com/AdvanceFTeam/Our-Scripts/refs/heads/main/AdvanceTech/Phantom%20Forces/Main.lua",
+  [893973440] = "https://raw.githubusercontent.com/AdvanceFTeam/Our-Scripts/refs/heads/main/AdvanceTech/Flee%20The%20Facility/Main.lua",
 }
