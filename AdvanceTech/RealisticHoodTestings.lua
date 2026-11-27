@@ -1479,3 +1479,5 @@ getgenv().RHT_stop = function()
 		Library:Destroy()
 	end)
 end
+
+Library:Notify("Realistic Hood Test DEV", "FUCK YOU, im jk i love you guys hope you can find a way to patch me hehee :3", 7, "good")
